@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* Custom Styles */
+
+.bg-login {
+    background-color: #0055a9;
+    background-image: url('../img/login-bg-gut.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+button, input, optgroup, select, textarea {
+    border-radius: 5px !important;
+    border: 1px solid #CBD5E1 !important;
+    background: #fff !important;
+    width: 100% !important;
+    padding: 8px 10px !important;
+    margin: 5px 0 !important;
+    /* font-size: 12px !important; */
+    line-height: 18px !important;
+}
+
+[type=button], [type=reset], [type=submit], button {
+    background-color: #0055a9 !important;
+    border-radius: 50px !important;
+    padding: 8px 10px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+input:focus-visible {
+    border: 1px solid #0055a9 !important;
+}
+
+.img-company {
+    width: 40px;
+    border-radius: 100%;
+    margin: 0 5px 5px 0;
+    border: 5px solid #0055a9;
+    float: left;
+}
+
+.neg-marg {
+    margin-left: -18px;
+}
+
+.inpt-w-auto {
+    width: auto !important;
+}
+
+.fgt-pwd {
+    color: #0055a9;
+    text-align: end;
+}
+
+.form-cont-h {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Dan - Feb 2022 */
+
+a {
+    color: #0055a9;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0055a9;
+    text-decoration: underline;
+}
+
+.file {
+    visibility: hidden;
+    position: absolute;
+}
+
+.g-recaptcha {
+    /*transform:scale(2);*/
+    /*-webkit-transform:scaleX(3);*/
+    /*transform-origin:0 0;*/
+    /*-webkit-transform-origin:0 0;*/
+}
