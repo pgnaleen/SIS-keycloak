@@ -3,12 +3,18 @@
     <#if section = "header">
         ${msg("emailForgotTitle")}
     <#elseif section = "form">
+        <div class="row">
+            <div class="col-12">
+                ${msg("emailInstruction")}
+            </div>
+        </div>
         <form id="kc-reset-password-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
-            <div class="${properties.kcFormGroupClass!}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
+            <div class="row mt-4 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <#--                    <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>-->
+                    <label for="username" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!}">
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="username" name="username" class="${properties.kcInputClass!}" autofocus value="${(auth.attemptedUsername!'')}" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
                     <#if messagesPerField.existsError('username')>
                         <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -17,19 +23,19 @@
                     </#if>
                 </div>
             </div>
-            <div class="${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
-                <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
+            <div class="row mt-3 ${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
+                <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
+                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmitForgotPassword")}"/>
+                </div>
+
+                <div id="kc-form-options" class="col-12 mt-3 ${properties.kcFormOptionsClass!}">
                     <div class="${properties.kcFormOptionsWrapperClass!}">
                         <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
                     </div>
                 </div>
-
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
-                </div>
             </div>
         </form>
     <#elseif section = "info" >
-        ${msg("emailInstruction")}
+
     </#if>
 </@layout.registrationLayout>
