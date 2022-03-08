@@ -338,70 +338,42 @@
                 </div>
             </div>
 
-<#--            <div class="row my-2 ${properties.kcFormGroupClass!}">-->
-<#--                <div class="col-12 ${properties.kcLabelWrapperClass!}">-->
-<#--                    <label for="user.attributes.studentPhoto"-->
-<#--                           class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>-->
-<#--                </div>-->
-<#--                <div class="col-12 ${properties.kcInputWrapperClass!}">-->
-<#--                    <input type="file" id="user.attributes.studentPhoto"-->
-<#--                           class="file ${properties.kcInputClass!}"-->
-<#--                           accept="image/*"-->
-<#--                           name="user.attributes.studentPhoto"-->
-<#--                           value="${(register.formData['user.attributes.studentPhoto']!'')}"-->
-<#--                           aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"-->
-<#--                    />-->
-<#--                    <div class="input-group my-3">-->
-<#--                        <input type="text" class="form-control" disabled placeholder="Upload File" id="file">-->
-<#--                        <div class="input-group-append">-->
-<#--                            <button type="button" class="browse btn btn-primary">Browse...</button>-->
-<#--                        </div>-->
-<#--                    </div>-->
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.studentPhoto"
+                           class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="file" id="user.attributes.studentPhoto"
+                           class="${properties.kcInputClass!}"
+                           accept="image/*"
+                           name="user.attributes.studentPhoto"
+                           value="${(register.formData['user.attributes.studentPhoto']!'')}"
+                           aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"
+                    />
 
-<#--                    <div class="ml-2 col-sm-6">-->
-<#--                        <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">-->
-<#--                    </div>-->
+                    <#if messagesPerField.existsError('studentPhoto')>
+                        <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
+                                    ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}
+                                </span>
+                    </#if>
+                </div>
 
-<#--                    <#if messagesPerField.existsError('studentPhoto')>-->
-<#--                        <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"-->
-<#--                              aria-live="polite">-->
-<#--                        ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}-->
-<#--                    </span>-->
-<#--                    </#if>-->
-<#--                </div>-->
-
-
-            <div class="ml-2 col-sm-6">
-                <div id="msg"></div>
-<#--                <form method="post" id="image-form">-->
-                    <input type="file" name="img[]" class="file" accept="image/*">
-                    <div class="input-group my-3">
-                        <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
-                        <div class="input-group-append">
-                            <button id="test" type="button" class="browse btn btn-primary">Browse...</button>
+                <#if recaptchaRequired??>
+                    <div class="row my-2 form-group">
+                        <div class="col-12 ${properties.kcInputWrapperClass!}">
+                            <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
                         </div>
                     </div>
-<#--                </form>-->
-            </div>
-            <div class="ml-2 col-sm-6">
-                <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
-            </div>
-            </div>
+                </#if>
 
-            <#if recaptchaRequired??>
-                <div class="row my-2 form-group">
-                    <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
+                <div class="row my-2 ${properties.kcFormGroupClass!}">
+                    <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
+                        <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
+                               type="submit" value="${msg("doRegister")}"/>
                     </div>
                 </div>
-            </#if>
-
-            <div class="row my-2 ${properties.kcFormGroupClass!}">
-                <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
-                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
-                           type="submit" value="${msg("doRegister")}"/>
-                </div>
-            </div>
         </form>
     </#if>
 </@layout.registrationLayout>

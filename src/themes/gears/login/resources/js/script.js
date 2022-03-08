@@ -2,40 +2,14 @@ adminServiceUrl="";
 realm="";
 
 function registerOnAdmission(adminServiceUrl, realm) {
+    console.log('registering on Admission Service');
     this.adminServiceUrl=adminServiceUrl;
     this.realm=realm;
-    console.log('registering on Admission Service');
 }
 
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
 window.addEventListener( 'load', function () {
-
-    var element = document.getElementById("test");
-    element.onclick = function(event) {
-        console.log(event);
-        var file = $(this).parents().find(".file");
-        file.trigger("click");
-    }
-
-    // $(document).on("click", ".browse", function() {
-    //     var file = $(this).parents().find(".file");
-    //     file.trigger("click");
-    // });
-    $('input[type="file"]').change(function(e) {
-        var fileName = e.target.files[0].name;
-        $("#file").val(fileName);
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("preview").src = e.target.result;
-        };
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    });
-
-
 
     // These variables are used to store the form data
     // const text = document.getElementById( "fullName" ).value;
@@ -55,7 +29,7 @@ window.addEventListener( 'load', function () {
     } );
 
     // At page load, if a file is already selected, read it.
-    if( file.dom.files[0] ) {
+    if( file && file.dom.files[0] ) {
         reader.readAsBinaryString( file.dom.files[0] );
     }
 
@@ -77,16 +51,13 @@ window.addEventListener( 'load', function () {
 
     // sendData is the main function
     function sendData() {
-        console.log(this.adminServiceUrl);
-        console.log(this.realm);
-
         var formData = new FormData();
 
         formData.append("nameTitle", document.getElementById( "user.attributes.nameTitle" ).value);
         formData.append("gender", document.getElementById( "user.attributes.gender" ).value);
-        formData.append("fullName", document.getElementById( "fullName" ).value);
-        formData.append("dob", "2022-02-27");
-        // formData.append("dob", document.getElementById( "user.attributes.dob" ).valueAsNumber);
+        formData.append("fullName", document.getElementById( "user.attributes.fullName" ).value);
+        // formData.append("dob", "22-02-27");
+        formData.append("dob", document.getElementById( "user.attributes.dob" ).value);
         formData.append("nationality", document.getElementById( "user.attributes.nationality" ).value);
         formData.append("address", document.getElementById( "user.attributes.address" ).value);
         formData.append("country", document.getElementById( "user.attributes.country" ).value);
@@ -100,22 +71,18 @@ window.addEventListener( 'load', function () {
         formData.append("parentEmail", document.getElementById( "user.attributes.parentEmail" ).value);
         formData.append("realm", this.realm);
         formData.append("activeStatus", true);
-        // formData.append("studentPhoto", document.getElementById( "user.attributes.studentPhoto" ).value);
 
         var blob = new Blob([file.binary], { type: "text/jpeg"});
-
         formData.append("studentPhoto", blob);
 
         var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:8089/api/v1/users/create");
+        request.open("POST", this.adminServiceUrl);
         request.send(formData);
 
     }
 
     // Access the form...
     const form = document.getElementById( "kc-register-form" );
-
-
 
     // ...to take over the submit event
     form.addEventListener( 'submit', function ( event ) {
