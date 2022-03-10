@@ -338,51 +338,78 @@
                 </div>
             </div>
 
-            <div class="row my-2 ${properties.kcFormGroupClass!}">
+            <#--            <div class="row my-2 ${properties.kcFormGroupClass!}">-->
+            <#--                <div class="col-12 ${properties.kcLabelWrapperClass!}">-->
+            <#--                    <label for="user.attributes.studentPhoto"-->
+            <#--                           class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>-->
+            <#--                </div>-->
+            <#--                <div class="col-12 ${properties.kcInputWrapperClass!}">-->
+            <#--                    <input type="file" id="user.attributes.studentPhoto"-->
+            <#--                           class="${properties.kcInputClass!}"-->
+            <#--                           accept="image/*"-->
+            <#--                           name="user.attributes.studentPhoto"-->
+            <#--                           value="${(register.formData['user.attributes.studentPhoto']!'')}"-->
+            <#--                           aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"-->
+            <#--                    />-->
+
+            <#--                    <#if messagesPerField.existsError('studentPhoto')>-->
+            <#--                        <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"-->
+            <#--                              aria-live="polite">-->
+            <#--                                    ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}-->
+            <#--                                </span>-->
+            <#--                    </#if>-->
+            <#--                </div>-->
+            <#--            </div>-->
+
+            <div class="row">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
                     <label for="user.attributes.studentPhoto"
                            class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>
                 </div>
-                <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="file" id="user.attributes.studentPhoto"
-                           class="${properties.kcInputClass!}"
-                           accept="image/*"
-                           name="user.attributes.studentPhoto"
+                <div class="col-12 file-drop-area">
+                    <span class="choose-file-button">choose file</span> <span class="file-message">or drag and drop files here</span>
+                    <input type="file" class="file-input ${properties.kcInputClass!}"
+                           id="user.attributes.studentPhoto"
+                           accept=".jfif,.jpg,.jpeg,.png,.gif,image/*"
                            value="${(register.formData['user.attributes.studentPhoto']!'')}"
                            aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"
-                    />
+                            <#--   multiple-->/>
 
                     <#if messagesPerField.existsError('studentPhoto')>
                         <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
-                                    ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}
-                                </span>
+                                ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}
+                            </span>
                     </#if>
                 </div>
+                <div class="col-12 rounded mx-auto d-block preview" id="divImageMediaPreview"> </div>
+            </div>
 
-                <div class="row my-2">
-                    <div class="col-1">
-                        <input type="checkbox" id="termCheckBox" name="termCheckBox">
-                    </div>
-                    <div class="col-11 px-0">
-                        <span>I agree to the <a href="info.ftl">Terms of service</a> and <a href="info.ftl">Privacy policy</a>.</span>
+
+
+            <div class="row my-2">
+                <div class="col-1">
+                    <input type="checkbox" id="termCheckBox" name="termCheckBox">
+                </div>
+                <div class="col-11 px-0">
+                    <span>I agree to the <a href="info.ftl">Terms of service</a> and <a href="info.ftl">Privacy policy</a>.</span>
+                </div>
+            </div>
+
+            <#if recaptchaRequired??>
+                <div class="row my-2 form-group">
+                    <div class="col-12 ${properties.kcInputWrapperClass!}">
+                        <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
                     </div>
                 </div>
+            </#if>
 
-                <#if recaptchaRequired??>
-                    <div class="row my-2 form-group">
-                        <div class="col-12 ${properties.kcInputWrapperClass!}">
-                            <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
-                        </div>
-                    </div>
-                </#if>
-
-                <div class="row my-2 ${properties.kcFormGroupClass!}">
-                    <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
-                        <input class="btn btn-primary ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
-                               type="submit" id="registerBtn" value="${msg("doRegister")}" disabled/>
-                    </div>
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
+                    <input class="btn btn-primary ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
+                           type="submit" id="registerBtn" value="${msg("doRegister")}" disabled/>
                 </div>
+            </div>
         </form>
     </#if>
 </@layout.registrationLayout>
