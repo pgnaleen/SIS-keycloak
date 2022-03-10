@@ -360,6 +360,15 @@
                     </#if>
                 </div>
 
+                <div class="row my-2">
+                    <div class="col-1">
+                        <input type="checkbox" id="termCheckBox" name="termCheckBox">
+                    </div>
+                    <div class="col-11 px-0">
+                        <span>I agree to the <a href="info.ftl">Terms of service</a> and <a href="info.ftl">Privacy policy</a>.</span>
+                    </div>
+                </div>
+
                 <#if recaptchaRequired??>
                     <div class="row my-2 form-group">
                         <div class="col-12 ${properties.kcInputWrapperClass!}">
@@ -370,8 +379,8 @@
 
                 <div class="row my-2 ${properties.kcFormGroupClass!}">
                     <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
-                        <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
-                               type="submit" value="${msg("doRegister")}"/>
+                        <input class="btn btn-primary ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
+                               type="submit" id="registerBtn" value="${msg("doRegister")}" disabled/>
                     </div>
                 </div>
         </form>

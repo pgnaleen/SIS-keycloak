@@ -11,6 +11,14 @@ function registerOnAdmission(adminServiceUrl, realm) {
 // we initialize our script at page load.
 window.addEventListener( 'load', function () {
 
+    //enable register button based terms checkbox
+    const termCheckBox = document.getElementById('termCheckBox');
+    const registerBtn = document.getElementById('registerBtn');
+    termCheckBox.onchange = function() {
+        registerBtn.disabled = !this.checked;
+    };
+
+
     // These variables are used to store the form data
     // const text = document.getElementById( "fullName" ).value;
     const file = {
@@ -29,7 +37,7 @@ window.addEventListener( 'load', function () {
     } );
 
     // At page load, if a file is already selected, read it.
-    if( file && file.dom.files[0] ) {
+    if( file && file.dom && file.dom.files[0] ) {
         reader.readAsBinaryString( file.dom.files[0] );
     }
 
