@@ -26,10 +26,6 @@
                                 name="user.attributes.nameTitle"
                                 value="${(register.formData['user.attributes.nameTitle']!'')}"
                                 required>
-                            <option value="dr">Dr.</option>
-                            <option value="mr" selected>Mr.</option>
-                            <option value="mrs">Mrs.</option>
-                            <option value="miss">Miss.</option>
                         </select>
                     </div>
                 </div>
@@ -44,8 +40,6 @@
                                 class="${properties.kcInputClass!}"
                                 name="user.attributes.gender"
                                 value="${(register.formData['user.attributes.gender']!'')}">
-                            <option value="male" selected>Male</option>
-                            <option value="female">Female</option>
                         </select>
                     </div>
                 </div>
@@ -102,8 +96,6 @@
                                 name="user.attributes.nationality"
                                 value="${(register.formData['user.attributes.nationality']!'')}"
                                 required>
-                            <option value="OM" selected>Oman</option>
-                            <option value="LK">Sri Lanka</option>
                         </select>
 
                         <#if messagesPerField.existsError('nationality')>
@@ -147,8 +139,6 @@
                             class="${properties.kcInputClass!}"
                             name="user.attributes.country"
                             value="${(register.formData['user.attributes.country']!'')}">
-                        <option value="1" selected>Oman</option>
-                        <option value="2">Sri Lanka</option>
                     </select>
                 </div>
             </div>
@@ -246,8 +236,6 @@
                                 class="${properties.kcInputClass!}"
                                 name="user.attributes.maritalStatus"
                                 value="${(register.formData['user.attributes.maritalStatus']!'')}">
-                            <option value="single" selected>Single</option>
-                            <option value="married">Married</option>
                         </select>
                     </div>
                 </div>
@@ -258,11 +246,13 @@
                                class="${properties.kcLabelClass!}">${msg("religion")}</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
-                        <input type="text" id="user.attributes.religion" class="${properties.kcInputClass!}"
-                               name="user.attributes.religion"
-                               value="${(register.formData['user.attributes.religion']!'')}"
-                               aria-invalid="<#if messagesPerField.existsError('religion')>true</#if>"
-                        />
+                        <select
+                                id="user.attributes.religion"
+                                class="${properties.kcInputClass!}"
+                                name="user.attributes.religion"
+                                value="${(register.formData['user.attributes.religion']!'')}"
+                                aria-invalid="<#if messagesPerField.existsError('religion')>true</#if>">
+                        </select>
 
                         <#if messagesPerField.existsError('religion')>
                             <span id="input-error-religion" class="${properties.kcInputErrorMessageClass!}"
@@ -369,7 +359,7 @@
                 <div class="col-12">
                     <div class="file-drop-area">
                         <span class="choose-file-button">choose file</span> <span class="file-message">or drag and drop files here</span>
-                        <input type="file" class="file-input ${properties.kcInputClass!}"
+                        <input type="file" class="file-input validate-image-size ${properties.kcInputClass!}"
                                id="user.attributes.studentPhoto"
                                accept=".jfif,.jpg,.jpeg,.png,.gif,image/*"
                                value="${(register.formData['user.attributes.studentPhoto']!'')}"
@@ -385,11 +375,12 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="img-txt-hint">Image should be in .jpg, .jpeg, .png file format. Maximum resolution is 600px x 600px. Maximum file size is 2MB.</div>
+                    <div class="img-txt-hint">Image should be in .jpg, .jpeg, .png file format. Maximum resolution is
+                        600px x 600px. Maximum file size is 2MB.
+                    </div>
                     <div class="rounded mx-auto d-block preview" id="divImageMediaPreview"></div>
                 </div>
             </div>
-
 
 
             <div class="row my-2">
@@ -397,7 +388,8 @@
                     <input type="checkbox" id="termCheckBox" name="termCheckBox" class="cbox-style">
                 </div>
                 <div class="col-11 px-0">
-                    <span>I agree to the <a href="info.ftl">Terms of service</a> and <a href="info.ftl">Privacy policy</a>.</span>
+                    <span>I agree to the <a href="info.ftl">Terms of service</a> and <a
+                                href="info.ftl">Privacy policy</a>.</span>
                 </div>
             </div>
 
