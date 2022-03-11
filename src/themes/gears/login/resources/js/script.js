@@ -10,6 +10,8 @@ function registerOnAdmission(adminServiceUrl, realm) {
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
 window.addEventListener('load', function () {
+    // get adminServiceUrl from theme.properties
+    this.adminServiceUrl = document.getElementById('adminServiceUrl').textContent;
 
     // get lookups and set into selects
     var nameTitleSelect = document.getElementById('user.attributes.nameTitle');
@@ -19,7 +21,7 @@ window.addEventListener('load', function () {
     var maritalStatusSelect = document.getElementById('user.attributes.maritalStatus');
     var religionSelect = document.getElementById('user.attributes.religion');
 
-    fetch("http://localhost:8089/api/v1/common-lookup/TITLE")
+    fetch(this.adminServiceUrl + "/api/v1/common-lookup/TITLE")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -30,7 +32,7 @@ window.addEventListener('load', function () {
                     }
                 }
             ));
-    fetch("http://localhost:8089/api/v1/common-lookup/GENDER")
+    fetch(this.adminServiceUrl + "/api/v1/common-lookup/GENDER")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -41,7 +43,7 @@ window.addEventListener('load', function () {
                     }
                 }
             ));
-    fetch("http://localhost:8089/api/v1/common-lookup/NATIONALITY")
+    fetch(this.adminServiceUrl + "/api/v1/common-lookup/NATIONALITY")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -52,7 +54,7 @@ window.addEventListener('load', function () {
                     }
                 }
             ));
-    fetch("http://localhost:8089/api/v1/countries")
+    fetch(this.adminServiceUrl + "/api/v1/countries")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -63,7 +65,7 @@ window.addEventListener('load', function () {
                     }
                 }
             ));
-    fetch("http://localhost:8089/api/v1/common-lookup/MARITAL_STATUS")
+    fetch(this.adminServiceUrl + "/api/v1/common-lookup/MARITAL_STATUS")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -74,7 +76,7 @@ window.addEventListener('load', function () {
                     }
                 }
             ));
-    fetch("http://localhost:8089/api/v1/common-lookup/RELIGION")
+    fetch(this.adminServiceUrl + "/api/v1/common-lookup/RELIGION")
         .then(r=> r.json()
             .then(
                 j=> {
@@ -160,7 +162,7 @@ window.addEventListener('load', function () {
         formData.append("studentPhoto", blob);
 
         var request = new XMLHttpRequest();
-        request.open("POST", this.adminServiceUrl);
+        request.open("POST", this.adminServiceUrl + "/api/v1/users/create");
         request.send(formData);
 
     }

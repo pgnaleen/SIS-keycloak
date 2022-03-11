@@ -408,5 +408,11 @@
                 </div>
             </div>
         </form>
+        <div hidden class="col-8 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
+            <div class=" ${properties.kcLabelWrapperClass!}">
+                <label  id="adminServiceUrl" value="${properties.adminServiceUrl!}"
+                        class="${properties.kcLabelClass!}">${properties.adminServiceUrl!}</label>
+            </div>
+        </div>
     </#if>
 </@layout.registrationLayout>
