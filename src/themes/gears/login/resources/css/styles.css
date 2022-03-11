@@ -15,16 +15,16 @@ button, input, optgroup, select, textarea {
     border: 1px solid #CBD5E1 !important;
     background: #fff !important;
     width: 100% !important;
-    padding: 8px 10px !important;
+    padding: 10px !important;
     margin: 5px 0 !important;
     /* font-size: 12px !important; */
     line-height: 18px !important;
 }
 
-[type=button], [type=reset], [type=submit], button {
+[type=button], [type=reset], [type=submit], [type=button], button {
     background-color: #0055a9 !important;
     border-radius: 50px !important;
-    padding: 8px 10px !important;
+    padding: 10px !important;
     color: #fff !important;
     font-weight: bold !important;
 }
@@ -76,12 +76,12 @@ a:hover {
     position: absolute;
 }
 
-.g-recaptcha {
-    /*transform:scale(2);*/
-    /*-webkit-transform:scaleX(3);*/
-    /*transform-origin:0 0;*/
-    /*-webkit-transform-origin:0 0;*/
-}
+/* .g-recaptcha {
+   transform:scale(2);
+   -webkit-transform:scaleX(3);
+   transform-origin:0 0;
+   -webkit-transform-origin:0 0;
+} */
 
 /* file upload https://bbbootstrap.com/snippets/single-file-upload-preview-thumbnail-74683784 */
 /*body {*/
@@ -99,10 +99,14 @@ a:hover {
     display: flex;
     align-items: center;
     max-width: 100%;
-    padding: 25px;
-    border: 1px  rgba(128, 112, 112, 0.4) solid;
-    border-radius: 3px;
-    transition: .2s
+    transition: .2s;
+    border-radius: 5px !important;
+    border: 1px solid #CBD5E1 !important;
+    background: #fff !important;
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 5px 0 !important;
+    line-height: 18px !important;
 }
 
 .choose-file-button {
@@ -117,9 +121,8 @@ a:hover {
 }
 
 .file-message {
-    font-size: small;
-    font-weight: 300;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 18px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
@@ -130,12 +133,89 @@ a:hover {
     left: 0;
     top: 0;
     height: 100%;
-    widows: 100%;
     cursor: pointer;
-    opacity: 0
+    opacity: 0;
 }
 
-/*.preview {*/
-/*    height: 100px;*/
-/*    width: 100px;*/
-/*}*/
+.img-txt-hint {
+    margin-top: 0.25rem !important;
+    font-size: .75rem !important;
+    color: rgba(148,163,184, 1) !important;
+    margin-bottom: 10px !important;
+}
+
+.preview {
+    background: #f5f5f5;
+    margin-bottom: 30px;
+}
+
+.cbox-style {
+    border-radius: 2px !important;
+    background-color: #fff !important;
+    border: 2px solid #cbd5e1 !important;
+    font-size: 1px;
+    height: 20px !important;
+    width: 20px !important;
+    z-index: 1;
+    margin-top: 3px !important;
+}
+
+.g-recaptcha div {
+    height: auto !important;
+    width: 100% !important;
+}
+
+iframe {
+    height: auto !important;
+    width: 100% !important;
+}
+
+.rc-anchor-light {
+    height: auto !important;
+    width: 100% !important;
+    float: left !important;
+    position: relative !important;
+}
+
+.rc-anchor-compact {
+    height: auto !important;
+    width: 95% !important;
+    float: left !important;
+    position: relative !important;
+    padding: 20px 2% !important;
+}
+
+.rc-anchor-content {
+    height: auto !important;
+    width: 50% !important;
+    float: left !important;
+    position: relative !important;
+}
+
+.rc-anchor-compact-footer {
+    height: auto !important;
+    width: 50% !important;
+    float: left !important;
+    position: relative !important;
+    margin: 0 !important;
+}
+
+.rc-anchor-checkbox-label {
+    width: 100% !important;
+}
+
+.rc-anchor-checkbox-label {
+    font-family: Roboto,helvetica,arial,sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 32px !important;
+}
+
+.rc-anchor-logo-landscape {
+    text-align: right !important;
+}
+
+.rc-anchor-pt {
+    text-align: right !important;
+    float: right !important;
+}
