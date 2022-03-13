@@ -139,19 +139,18 @@ window.addEventListener('load', function () {
     function sendData() {
         var formData = new FormData();
 
-        formData.append("nameTitle", document.getElementById("user.attributes.nameTitle").value);
-        formData.append("gender", document.getElementById("user.attributes.gender").value);
+        formData.append("titleId", document.getElementById("user.attributes.nameTitle").value);
+        formData.append("genderId", document.getElementById("user.attributes.gender").value);
         formData.append("fullName", document.getElementById("user.attributes.fullName").value);
-        // formData.append("dob", "22-02-27");
         formData.append("dob", document.getElementById("user.attributes.dob").value);
-        formData.append("nationality", document.getElementById("user.attributes.nationality").value);
+        formData.append("nationalityId", document.getElementById("user.attributes.nationality").value);
         formData.append("address", document.getElementById("user.attributes.address").value);
-        formData.append("country", document.getElementById("user.attributes.country").value);
+        formData.append("countryId", document.getElementById("user.attributes.country").value);
         formData.append("email", document.getElementById("email").value);
         formData.append("username", document.getElementById("username").value);
         formData.append("password", document.getElementById("password").value);
-        formData.append("maritalStatus", document.getElementById("user.attributes.maritalStatus").value);
-        formData.append("religion", document.getElementById("user.attributes.religion").value);
+        formData.append("maritalStatusId", document.getElementById("user.attributes.maritalStatus").value);
+        formData.append("religionId", document.getElementById("user.attributes.religion").value);
         formData.append("parentPhone", document.getElementById("user.attributes.parentPhone").value);
         formData.append("parentMobile", document.getElementById("user.attributes.parentMobile").value);
         formData.append("parentEmail", document.getElementById("user.attributes.parentEmail").value);
