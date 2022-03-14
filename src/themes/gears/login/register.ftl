@@ -22,7 +22,7 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <select
                                 id="user.attributes.nameTitle"
-                                class="${properties.kcInputClass!}"
+                                class="mandatory-field ${properties.kcInputClass!}"
                                 name="user.attributes.nameTitle"
                                 value="${(register.formData['user.attributes.nameTitle']!'')}"
                                 required>
@@ -37,9 +37,10 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <select
                                 id="user.attributes.gender"
-                                class="${properties.kcInputClass!}"
+                                class="mandatory-field ${properties.kcInputClass!}"
                                 name="user.attributes.gender"
-                                value="${(register.formData['user.attributes.gender']!'')}">
+                                value="${(register.formData['user.attributes.gender']!'')}"
+                                required>
                         </select>
                     </div>
                 </div>
@@ -50,7 +51,8 @@
                     <label for="user.attributes.fullName" class="${properties.kcLabelClass!}">${msg("fullName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="text" id="user.attributes.fullName" class="${properties.kcInputClass!}"
+                    <input type="text" id="user.attributes.fullName"
+                           class="mandatory-field ${properties.kcInputClass!}"
                            name="user.attributes.fullName"
                            value="${(register.formData.lastName!'')}"
                            autocomplete="user.attributes.fullName"
@@ -58,7 +60,7 @@
                            required/>
 
                     <#if messagesPerField.existsError('fullName')>
-                        <span id="input-error-fullname" class="${properties.kcInputErrorMessageClass!}"
+                        <span id="input-error-fullname" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
                         ${kcSanitize(messagesPerField.get('fullName'))?no_esc}
                     </span>
@@ -75,12 +77,13 @@
 
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="date"
-                               class="${properties.kcInputClass!}"
+                               class="mandatory-field ${properties.kcInputClass!}"
                                id="user.attributes.dob"
                                name="user.attributes.dob"
                                value="${(register.formData['user.attributes.dob']!'')}"
                                placeholder="yyyy-mm-dd"
-                               pattern="yyyy-MM-dd"/>
+                               pattern="yyyy-MM-dd"
+                               required/>
                     </div>
                 </div>
 
@@ -92,7 +95,7 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <select
                                 id="user.attributes.nationality"
-                                class="${properties.kcInputClass!}"
+                                class="mandatory-field ${properties.kcInputClass!}"
                                 name="user.attributes.nationality"
                                 value="${(register.formData['user.attributes.nationality']!'')}"
                                 required>
@@ -117,8 +120,7 @@
                            class="${properties.kcInputClass!}"
                            name="user.attributes.address"
                            value="${(register.formData['user.attributes.address']!'')}"
-                           aria-invalid="<#if messagesPerField.existsError('address')>true</#if>"
-                    />
+                           aria-invalid="<#if messagesPerField.existsError('address')>true</#if>"/>
 
                     <#if messagesPerField.existsError('address')>
                         <span id="input-error-address" class="${properties.kcInputErrorMessageClass!}"
@@ -136,9 +138,10 @@
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <select
                             id="user.attributes.country"
-                            class="${properties.kcInputClass!}"
+                            class="mandatory-field ${properties.kcInputClass!}"
                             name="user.attributes.country"
-                            value="${(register.formData['user.attributes.country']!'')}">
+                            value="${(register.formData['user.attributes.country']!'')}"
+                            required>
                     </select>
                 </div>
             </div>
@@ -148,13 +151,17 @@
                     <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="email" id="email" class="${properties.kcInputClass!}" name="email"
-                           value="${(register.formData.email!'')}" autocomplete="email"
+                    <input type="email"
+                           id="email"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           name="email"
+                           value="${(register.formData.email!'')}"
+                           autocomplete="email"
                            aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
-                    />
+                           required/>
 
                     <#if messagesPerField.existsError('email')>
-                        <span id="input-error-email" class="${properties.kcInputErrorMessageClass!}"
+                        <span id="input-error-email" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
                         ${kcSanitize(messagesPerField.get('email'))?no_esc}
                     </span>
@@ -168,13 +175,16 @@
                         <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <input type="text" id="username" class="${properties.kcInputClass!}" name="username"
-                               value="${(register.formData.username!'')}" autocomplete="username"
+                        <input type="text" id="username"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="username"
+                               value="${(register.formData.username!'')}"
+                               autocomplete="username"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
-                        />
+                               required/>
 
                         <#if messagesPerField.existsError('username')>
-                            <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}"
+                            <span id="input-error-username" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
                             ${kcSanitize(messagesPerField.get('username'))?no_esc}
                         </span>
@@ -189,13 +199,16 @@
                         <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <input type="password" id="password" class="${properties.kcInputClass!}" name="password"
+                        <input type="password"
+                               id="password"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="password"
                                autocomplete="new-password"
                                aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                        />
+                               required/>
 
                         <#if messagesPerField.existsError('password')>
-                            <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}"
+                            <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password'))?no_esc}
                         </span>
@@ -209,13 +222,15 @@
                                class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <input type="password" id="password-confirm" class="${properties.kcInputClass!}"
+                        <input type="password"
+                               id="password-confirm"
+                               class="mandatory-field ${properties.kcInputClass!}"
                                name="password-confirm"
                                aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                        />
+                               required/>
 
                         <#if messagesPerField.existsError('password-confirm')>
-                            <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}"
+                            <span id="input-error-password-confirm" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>
@@ -233,9 +248,10 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <select
                                 id="user.attributes.maritalStatus"
-                                class="${properties.kcInputClass!}"
+                                class="mandatory-field ${properties.kcInputClass!}"
                                 name="user.attributes.maritalStatus"
-                                value="${(register.formData['user.attributes.maritalStatus']!'')}">
+                                value="${(register.formData['user.attributes.maritalStatus']!'')}"
+                                required>
                         </select>
                     </div>
                 </div>
@@ -248,10 +264,11 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <select
                                 id="user.attributes.religion"
-                                class="${properties.kcInputClass!}"
+                                class="mandatory-field ${properties.kcInputClass!}"
                                 name="user.attributes.religion"
                                 value="${(register.formData['user.attributes.religion']!'')}"
-                                aria-invalid="<#if messagesPerField.existsError('religion')>true</#if>">
+                                aria-invalid="<#if messagesPerField.existsError('religion')>true</#if>"
+                                required>
                         </select>
 
                         <#if messagesPerField.existsError('religion')>
@@ -292,11 +309,13 @@
                                class="${properties.kcLabelClass!}">${msg("parentMobile")}</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
-                        <input type="text" id="user.attributes.parentMobile" class="${properties.kcInputClass!}"
+                        <input type="text"
+                               id="user.attributes.parentMobile"
+                               class="mandatory-field ${properties.kcInputClass!}"
                                name="user.attributes.parentMobile"
                                value="${(register.formData['user.attributes.parentMobile']!'')}"
                                aria-invalid="<#if messagesPerField.existsError('parentMobile')>true</#if>"
-                        />
+                               required/>
 
                         <#if messagesPerField.existsError('parentMobile')>
                             <span id="input-error-parentMobile" class="${properties.kcInputErrorMessageClass!}"
@@ -313,11 +332,13 @@
                            class="${properties.kcLabelClass!}">${msg("parentEmail")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="text" id="user.attributes.parentEmail" class="${properties.kcInputClass!}"
+                    <input type="email"
+                           id="user.attributes.parentEmail"
+                           class="mandatory-field ${properties.kcInputClass!}"
                            name="user.attributes.parentEmail"
                            value="${(register.formData['user.attributes.parentEmail']!'')}"
                            aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
-                    />
+                           required/>
 
                     <#if messagesPerField.existsError('parentEmail')>
                         <span id="input-error-parentEmail" class="${properties.kcInputErrorMessageClass!}"
@@ -328,38 +349,16 @@
                 </div>
             </div>
 
-            <#--            <div class="row my-2 ${properties.kcFormGroupClass!}">-->
-            <#--                <div class="col-12 ${properties.kcLabelWrapperClass!}">-->
-            <#--                    <label for="user.attributes.studentPhoto"-->
-            <#--                           class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>-->
-            <#--                </div>-->
-            <#--                <div class="col-12 ${properties.kcInputWrapperClass!}">-->
-            <#--                    <input type="file" id="user.attributes.studentPhoto"-->
-            <#--                           class="${properties.kcInputClass!}"-->
-            <#--                           accept="image/*"-->
-            <#--                           name="user.attributes.studentPhoto"-->
-            <#--                           value="${(register.formData['user.attributes.studentPhoto']!'')}"-->
-            <#--                           aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"-->
-            <#--                    />-->
-
-            <#--                    <#if messagesPerField.existsError('studentPhoto')>-->
-            <#--                        <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"-->
-            <#--                              aria-live="polite">-->
-            <#--                                    ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}-->
-            <#--                                </span>-->
-            <#--                    </#if>-->
-            <#--                </div>-->
-            <#--            </div>-->
-
             <div class="row my-2">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
                     <label for="user.attributes.studentPhoto"
                            class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>
                 </div>
                 <div class="col-12">
-                    <div class="file-drop-area">
+                    <div class="file-drop-area ${properties.kcInputClass!}">
                         <span class="choose-file-button">choose file</span> <span class="file-message">or drag and drop files here</span>
-                        <input type="file" class="file-input validate-image-size ${properties.kcInputClass!}"
+                        <input type="file"
+                               class="file-input validate-image-size ${properties.kcInputClass!}"
                                id="user.attributes.studentPhoto"
                                accept=".jfif,.jpg,.jpeg,.png,.gif,image/*"
                                value="${(register.formData['user.attributes.studentPhoto']!'')}"

@@ -219,3 +219,14 @@ iframe {
     text-align: right !important;
     float: right !important;
 }
+
+.mandatory-field {
+    border-inline-start-width: 4px !important;
+    --tw-border-opacity: 1 !important;
+    border-inline-start-color: rgba(220,38,38, 1) !important;
+    border-radius: 0.5rem !important;
+}
+
+.error-msg {
+    color: #dc2626;
+}

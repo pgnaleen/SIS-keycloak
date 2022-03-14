@@ -26,7 +26,9 @@
                                     <input tabindex="1" id="username" class="${properties.kcInputClass!}"
                                            name="username" value="${(login.username!'')}" type="text" disabled/>
                                 <#else>
-                                    <input tabindex="1" id="username" class="${properties.kcInputClass!}"
+                                    <input tabindex="1"
+                                           id="username"
+                                           class="mandatory-field ${properties.kcInputClass!}"
                                            name="username" value="${(login.username!'')}" type="text" autofocus
                                            autocomplete="off"
                                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
@@ -47,7 +49,10 @@
                                 <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                             </div>
                             <div class="col-12">
-                                <input tabindex="2" id="password" class="${properties.kcInputClass!}" name="password"
+                                <input tabindex="2"
+                                       id="password"
+                                       class="mandatory-field ${properties.kcInputClass!}"
+                                       name="password"
                                        type="password" autocomplete="off"
                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"/>
                             </div>

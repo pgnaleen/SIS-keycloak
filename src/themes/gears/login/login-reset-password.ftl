@@ -15,7 +15,13 @@
                     <label for="username" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="text" id="username" name="username" class="${properties.kcInputClass!}" autofocus value="${(auth.attemptedUsername!'')}" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
+                    <input type="text"
+                           id="username"
+                           name="username"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           autofocus
+                           value="${(auth.attemptedUsername!'')}"
+                           aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
                     <#if messagesPerField.existsError('username')>
                         <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
                                     ${kcSanitize(messagesPerField.get('username'))?no_esc}
