@@ -14,8 +14,8 @@
         <div id="kc-form">
             <div id="kc-form-wrapper">
                 <#if realm.password>
-                    <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}"
-                          method="post">
+                    <form class="g-3 needs-validation" id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}"
+                          method="post" novalidate>
                         <div class="row my-2 ${properties.kcFormGroupClass!}">
                             <div class="col-12">
                                 <label for="username"
@@ -29,11 +29,16 @@
                                     <input tabindex="1"
                                            id="username"
                                            class="mandatory-field ${properties.kcInputClass!}"
-                                           name="username" value="${(login.username!'')}" type="text" autofocus
+                                           name="username"
+                                           value="${(login.username!'')}"
+                                           type="text" autofocus
                                            autocomplete="off"
                                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
+                                           required
                                     />
-
+                                    <div class="invalid-feedback">
+                                        Username is required.
+                                    </div>
                                     <#if messagesPerField.existsError('username','password')>
                                         <span id="input-error" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                               aria-live="polite">
@@ -55,8 +60,12 @@
                                            class="mandatory-field ${properties.kcInputClass!}"
                                            name="password"
                                            type="password" autocomplete="off"
-                                           aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"/>
+                                           aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
+                                           required/>
                                     <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                    <div class="invalid-feedback">
+                                        Password is required.
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -52,6 +52,27 @@ window.addEventListener('load', function () {
     });
 
 
+    // bootstrap form field validations
+    (function () {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+
     // get adminServiceUrl from theme.properties
     this.adminServiceUrl = document.getElementById('adminServiceUrl').textContent;
 
@@ -137,27 +158,6 @@ window.addEventListener('load', function () {
     termCheckBox.onchange = function () {
         registerBtn.disabled = !this.checked;
     };
-
-
-    // bootstrap form field validations
-    (function () {
-        'use strict'
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
 
 
     // These variables are used to store the form data
