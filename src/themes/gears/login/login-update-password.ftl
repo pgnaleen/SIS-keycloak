@@ -18,11 +18,17 @@
                     <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!}"
-                           autofocus autocomplete="new-password"
-                           aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                    />
-
+                    <div class="input-group" id="show_hide_password">
+                        <input type="password"
+                               id="password-new"
+                               name="password-new"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               autofocus
+                               autocomplete="new-password"
+                               aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
+                        />
+                        <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    </div>
                     <#if messagesPerField.existsError('password')>
                         <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -37,11 +43,16 @@
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-confirm" name="password-confirm"
-                           class="${properties.kcInputClass!}"
-                           autocomplete="new-password"
-                           aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                    />
+                    <div class="input-group" id="show_hide_confirm_password">
+                        <input type="password"
+                               id="password-confirm"
+                               name="password-confirm"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               autocomplete="new-password"
+                               aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
+                        />
+                        <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    </div>
 
                     <#if messagesPerField.existsError('password-confirm')>
                         <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}"

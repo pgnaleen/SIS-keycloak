@@ -11,11 +11,13 @@
                 </div>
             </div>
         </div>
-        <form id="kc-register-form" class="${properties.kcFormClass!} ${properties.gearsFormClass!}"
+        <form id="kc-register-form"
+              class="g-3 needs-validation ${properties.kcFormClass!} ${properties.gearsFormClass!}"
               action="${url.registrationAction}" method="post"
-              onsubmit=registerOnAdmission("${properties.adminServiceUrl!}","${realm.name!}")>
+              onsubmit=registerOnAdmission("${properties.adminServiceUrl!}","${realm.name!}")
+              novalidate>
             <div class="row my-2">
-                <div class="col-4 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('nameTitle',properties.kcFormGroupErrorClass!)}">
+                <div class="col-6 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('nameTitle',properties.kcFormGroupErrorClass!)}">
                     <div class="${properties.kcLabelWrapperClass!}">
                         <label for="nameTitle" class="${properties.kcLabelClass!}">${msg("nameTitle")}</label>
                     </div>
@@ -26,11 +28,14 @@
                                 name="user.attributes.nameTitle"
                                 value="${(register.formData['user.attributes.nameTitle']!'')}"
                                 required>
+                            <div class="invalid-feedback">
+                                Name Title is required.
+                            </div>
                         </select>
                     </div>
                 </div>
 
-                <div class="col-8 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
+                <div class="col-6 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
                     <div class=" ${properties.kcLabelWrapperClass!}">
                         <label for="gender" class="${properties.kcLabelClass!}">${msg("gender")}</label>
                     </div>
@@ -42,6 +47,9 @@
                                 value="${(register.formData['user.attributes.gender']!'')}"
                                 required>
                         </select>
+                        <div class="invalid-feedback">
+                            Gender is required.
+                        </div>
                     </div>
                 </div>
 
@@ -58,7 +66,9 @@
                            autocomplete="user.attributes.fullName"
                            aria-invalid="<#if messagesPerField.existsError('fullName')>true</#if>"
                            required/>
-
+                    <div class="invalid-feedback">
+                        Full Name is required.
+                    </div>
                     <#if messagesPerField.existsError('fullName')>
                         <span id="input-error-fullname" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -84,6 +94,9 @@
                                placeholder="yyyy-mm-dd"
                                pattern="yyyy-MM-dd"
                                required/>
+                        <div class="invalid-feedback">
+                            Date of Birth is required.
+                        </div>
                     </div>
                 </div>
 
@@ -100,6 +113,9 @@
                                 value="${(register.formData['user.attributes.nationality']!'')}"
                                 required>
                         </select>
+                        <div class="invalid-feedback">
+                            Nationality is required.
+                        </div>
 
                         <#if messagesPerField.existsError('nationality')>
                             <span id="input-error-nationality" class="${properties.kcInputErrorMessageClass!}"
@@ -121,7 +137,9 @@
                            name="user.attributes.address"
                            value="${(register.formData['user.attributes.address']!'')}"
                            aria-invalid="<#if messagesPerField.existsError('address')>true</#if>"/>
-
+                    <div class="invalid-feedback">
+                        Address is required.
+                    </div>
                     <#if messagesPerField.existsError('address')>
                         <span id="input-error-address" class="${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -143,6 +161,9 @@
                             value="${(register.formData['user.attributes.country']!'')}"
                             required>
                     </select>
+                    <div class="invalid-feedback">
+                        Country is required.
+                    </div>
                 </div>
             </div>
 
@@ -151,6 +172,7 @@
                     <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <#--                    <div class="input-group has-validation">-->
                     <input type="email"
                            id="email"
                            class="mandatory-field ${properties.kcInputClass!}"
@@ -158,8 +180,13 @@
                            value="${(register.formData.email!'')}"
                            autocomplete="email"
                            aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
+                            <#--                           onfocusout="userEmailValidation()"-->
                            required/>
-
+                    <#--                    <span class="error-msg" id="userEmailValidationSpan"></span>-->
+                    <div class="invalid-feedback">
+                        Valid Email is required.
+                    </div>
+                    <#--                </div>-->
                     <#if messagesPerField.existsError('email')>
                         <span id="input-error-email" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -182,7 +209,9 @@
                                autocomplete="username"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
                                required/>
-
+                        <div class="invalid-feedback">
+                            Username is required.
+                        </div>
                         <#if messagesPerField.existsError('username')>
                             <span id="input-error-username" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -199,21 +228,27 @@
                         <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <input type="password"
-                               id="password"
-                               class="mandatory-field ${properties.kcInputClass!}"
-                               name="password"
-                               autocomplete="new-password"
-                               aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                               required/>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password"
+                                   id="password"
+                                   class="mandatory-field ${properties.kcInputClass!}"
+                                   name="password"
+                                   autocomplete="new-password"
+                                   aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
+                                   required/>
+                            <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        Password is required.
+                    </div>
 
-                        <#if messagesPerField.existsError('password')>
-                            <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
-                                  aria-live="polite">
+                    <#if messagesPerField.existsError('password')>
+                        <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password'))?no_esc}
                         </span>
-                        </#if>
-                    </div>
+                    </#if>
                 </div>
 
                 <div class="row my-2 ${properties.kcFormGroupClass!}">
@@ -222,15 +257,21 @@
                                class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <input type="password"
-                               id="password-confirm"
-                               class="mandatory-field ${properties.kcInputClass!}"
-                               name="password-confirm"
-                               aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                               required/>
-
+                        <div class="input-group" id="show_hide_confirm_password">
+                            <input type="password"
+                                   id="password-confirm"
+                                   class="mandatory-field ${properties.kcInputClass!}"
+                                   name="password-confirm"
+                                   aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
+                                   required/>
+                            <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="invalid-feedback">
+                            Password Confirmation is required.
+                        </div>
                         <#if messagesPerField.existsError('password-confirm')>
-                            <span id="input-error-password-confirm" class="error-msg ${properties.kcInputErrorMessageClass!}"
+                            <span id="input-error-password-confirm"
+                                  class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>
@@ -253,6 +294,9 @@
                                 value="${(register.formData['user.attributes.maritalStatus']!'')}"
                                 required>
                         </select>
+                        <div class="invalid-feedback">
+                            Marital Status is required.
+                        </div>
                     </div>
                 </div>
 
@@ -270,7 +314,9 @@
                                 aria-invalid="<#if messagesPerField.existsError('religion')>true</#if>"
                                 required>
                         </select>
-
+                        <div class="invalid-feedback">
+                            Religion is required.
+                        </div>
                         <#if messagesPerField.existsError('religion')>
                             <span id="input-error-religion" class="${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -316,7 +362,9 @@
                                value="${(register.formData['user.attributes.parentMobile']!'')}"
                                aria-invalid="<#if messagesPerField.existsError('parentMobile')>true</#if>"
                                required/>
-
+                        <div class="invalid-feedback">
+                            Parent Mobile is required.
+                        </div>
                         <#if messagesPerField.existsError('parentMobile')>
                             <span id="input-error-parentMobile" class="${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -339,7 +387,9 @@
                            value="${(register.formData['user.attributes.parentEmail']!'')}"
                            aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
                            required/>
-
+                    <div class="invalid-feedback">
+                        Valid Parent Email is required.
+                    </div>
                     <#if messagesPerField.existsError('parentEmail')>
                         <span id="input-error-parentEmail" class="${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -407,10 +457,11 @@
                 </div>
             </div>
         </form>
-        <div hidden class="col-8 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
+        <div hidden
+             class="col-8 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
             <div class=" ${properties.kcLabelWrapperClass!}">
-                <label  id="adminServiceUrl" value="${properties.adminServiceUrl!}"
-                        class="${properties.kcLabelClass!}">${properties.adminServiceUrl!}</label>
+                <label id="adminServiceUrl" value="${properties.adminServiceUrl!}"
+                       class="${properties.kcLabelClass!}">${properties.adminServiceUrl!}</label>
             </div>
         </div>
     </#if>

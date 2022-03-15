@@ -49,12 +49,15 @@
                                 <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                             </div>
                             <div class="col-12">
-                                <input tabindex="2"
-                                       id="password"
-                                       class="mandatory-field ${properties.kcInputClass!}"
-                                       name="password"
-                                       type="password" autocomplete="off"
-                                       aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"/>
+                                <div class="input-group" id="show_hide_password">
+                                    <input tabindex="2"
+                                           id="password"
+                                           class="mandatory-field ${properties.kcInputClass!}"
+                                           name="password"
+                                           type="password" autocomplete="off"
+                                           aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"/>
+                                    <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
 

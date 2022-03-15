@@ -7,9 +7,51 @@ function registerOnAdmission(adminServiceUrl, realm) {
     this.realm = realm;
 }
 
+// function userEmailValidation() {
+//     const inpObj = document.getElementById("validationCustomUsername");
+//     if (!inpObj.checkValidity()) {
+//         document.getElementById('userEmailValidationSpan').innerHTML="Valid Email is required.";
+//     } else {
+//         document.getElementById('userEmailValidationSpan').innerHTML="";
+//     }
+//
+// }
+
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
 window.addEventListener('load', function () {
+
+    $(document).ready(function() {
+        $("#show_hide_password a").on('click', function(event) {
+            event.preventDefault();
+            if($('#show_hide_password input').attr("type") == "text"){
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password svg').addClass( "fa-eye-slash" );
+                $('#show_hide_password svg').removeClass( "fa-eye" );
+            }else if($('#show_hide_password input').attr("type") == "password"){
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password svg').removeClass( "fa-eye-slash" );
+                $('#show_hide_password svg').addClass( "fa-eye" );
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $("#show_hide_confirm_password a").on('click', function(event) {
+            event.preventDefault();
+            if($('#show_hide_confirm_password input').attr("type") == "text"){
+                $('#show_hide_confirm_password input').attr('type', 'password');
+                $('#show_hide_confirm_password svg').addClass( "fa-eye-slash" );
+                $('#show_hide_confirm_password svg').removeClass( "fa-eye" );
+            }else if($('#show_hide_confirm_password input').attr("type") == "password"){
+                $('#show_hide_confirm_password input').attr('type', 'text');
+                $('#show_hide_confirm_password svg').removeClass( "fa-eye-slash" );
+                $('#show_hide_confirm_password svg').addClass( "fa-eye" );
+            }
+        });
+    });
+
+
     // get adminServiceUrl from theme.properties
     this.adminServiceUrl = document.getElementById('adminServiceUrl').textContent;
 
@@ -95,6 +137,27 @@ window.addEventListener('load', function () {
     termCheckBox.onchange = function () {
         registerBtn.disabled = !this.checked;
     };
+
+
+    // bootstrap form field validations
+    (function () {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 
 
     // These variables are used to store the form data
@@ -243,3 +306,4 @@ window.addEventListener('load', function () {
     document.getElementById("user.attributes.studentPhoto")
         .addEventListener('change', validateMaxImageFileSize);
 });
+
