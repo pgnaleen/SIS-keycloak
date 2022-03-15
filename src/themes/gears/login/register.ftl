@@ -64,6 +64,7 @@
                            name="user.attributes.fullName"
                            value="${(register.formData.lastName!'')}"
                            autocomplete="user.attributes.fullName"
+                           maxlength="100"
                            aria-invalid="<#if messagesPerField.existsError('fullName')>true</#if>"
                            required/>
                     <div class="invalid-feedback">
@@ -136,6 +137,7 @@
                            class="${properties.kcInputClass!}"
                            name="user.attributes.address"
                            value="${(register.formData['user.attributes.address']!'')}"
+                           maxlength="1000"
                            aria-invalid="<#if messagesPerField.existsError('address')>true</#if>"/>
                     <div class="invalid-feedback">
                         Address is required.
@@ -179,6 +181,7 @@
                            name="email"
                            value="${(register.formData.email!'')}"
                            autocomplete="email"
+                           maxlength="30"
                            aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
                             <#--                           onfocusout="userEmailValidation()"-->
                            required/>
@@ -207,6 +210,7 @@
                                name="username"
                                value="${(register.formData.username!'')}"
                                autocomplete="username"
+                               maxlength="30"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
                                required/>
                         <div class="invalid-feedback">
@@ -234,6 +238,7 @@
                                    class="mandatory-field ${properties.kcInputClass!}"
                                    name="password"
                                    autocomplete="new-password"
+                                   maxlength="30"
                                    aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
                                    required/>
                             <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
@@ -262,6 +267,7 @@
                                    id="password-confirm"
                                    class="mandatory-field ${properties.kcInputClass!}"
                                    name="password-confirm"
+                                   maxlength="30"
                                    aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
                                    required/>
                             <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>

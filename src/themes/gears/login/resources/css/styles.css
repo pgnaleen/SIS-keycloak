@@ -237,3 +237,14 @@ a:hover {
     cursor: pointer;
     z-index: 1;
 }
+
+.field-label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height */
+
+    color: #64748B;
+}
