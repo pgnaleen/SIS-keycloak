@@ -160,15 +160,15 @@ a:hover {
     margin-top: 3px !important;
 }
 
-.g-recaptcha div {
-    height: auto !important;
-    width: 100% !important;
-}
+/*.g-recaptcha div {*/
+/*    height: auto !important;*/
+/*    width: 100% !important;*/
+/*}*/
 
-iframe {
-    height: auto !important;
-    width: 100% !important;
-}
+/*iframe {*/
+/*    height: auto !important;*/
+/*    width: 100% !important;*/
+/*}*/
 
 .rc-anchor-light {
     height: auto !important;
