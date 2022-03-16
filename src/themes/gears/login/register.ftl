@@ -86,15 +86,19 @@
                                class="${properties.kcLabelClass!}">${msg("dob")}</label>
                     </div>
 
-                    <div class="${properties.kcInputWrapperClass!}">
-                        <input type="date"
-                               class="mandatory-field ${properties.kcInputClass!}"
+                    <div id="dobDatePicker" class="input-group date ${properties.kcInputWrapperClass!}">
+                        <input type="text"
+                               class="mandatory-field form-control ${properties.kcInputClass!}"
                                id="user.attributes.dob"
                                name="user.attributes.dob"
                                value="${(register.formData['user.attributes.dob']!'')}"
                                placeholder="yyyy-mm-dd"
-                               pattern="yyyy-MM-dd"
                                required/>
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                                <i class="fa fa-calendar p-1"></i>
+                            </span>
+                        </span>
                         <div class="invalid-feedback">
                             Date of Birth is required.
                         </div>
@@ -127,6 +131,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
                     <label for="user.attributes.address" class="${properties.kcLabelClass!}">${msg("address")}</label>
@@ -407,24 +412,24 @@
 
             <div class="row my-2">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.studentPhoto"
-                           class="${properties.kcLabelClass!}">${msg("studentPhoto")}</label>
+                    <label for="user.attributes.userPhoto"
+                           class="${properties.kcLabelClass!}">${msg("userPhoto")}</label>
                 </div>
                 <div class="col-12">
                     <div class="file-drop-area ${properties.kcInputClass!}">
                         <span class="choose-file-button">choose file</span> <span class="file-message">or drag and drop files here</span>
                         <input type="file"
                                class="file-input validate-image-size ${properties.kcInputClass!}"
-                               id="user.attributes.studentPhoto"
+                               id="user.attributes.userPhoto"
                                accept=".jfif,.jpg,.jpeg,.png,.gif,image/*"
-                               value="${(register.formData['user.attributes.studentPhoto']!'')}"
-                               aria-invalid="<#if messagesPerField.existsError('studentPhoto')>true</#if>"
+                               value="${(register.formData['user.attributes.userPhoto']!'')}"
+                               aria-invalid="<#if messagesPerField.existsError('userPhoto')>true</#if>"
                                 <#--   multiple-->/>
 
-                        <#if messagesPerField.existsError('studentPhoto')>
-                            <span id="input-error-studentPhoto" class="${properties.kcInputErrorMessageClass!}"
+                        <#if messagesPerField.existsError('userPhoto')>
+                            <span id="input-error-userPhoto" class="${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
-                                    ${kcSanitize(messagesPerField.get('studentPhoto'))?no_esc}
+                                    ${kcSanitize(messagesPerField.get('userPhoto'))?no_esc}
                                 </span>
                         </#if>
                     </div>

@@ -72,6 +72,18 @@ window.addEventListener('load', function () {
             })
     })()
 
+    $('#dobDatePicker').datepicker({
+        format: "yyyy-mm-dd",
+        // todayBtn: "linked",
+        clearBtn: true,
+        daysOfWeekHighlighted: "0,6",
+        calendarWeeks: true,
+        autoclose: true,
+        todayHighlight: true,
+        // datesDisabled: ['03/06/2022', '03/21/2022'],
+        toggleActive: true,
+        // defaultViewDate: { year: 1977, month: 04, day: 25 }
+    });
 
     // get adminServiceUrl from theme.properties
     this.adminServiceUrl = document.getElementById('adminServiceUrl').textContent;
@@ -163,7 +175,7 @@ window.addEventListener('load', function () {
     // These variables are used to store the form data
     // const text = document.getElementById( "fullName" ).value;
     const file = {
-        dom: document.getElementById("user.attributes.studentPhoto"),
+        dom: document.getElementById("user.attributes.userPhoto"),
         binary: null
     };
 
@@ -221,7 +233,7 @@ window.addEventListener('load', function () {
         formData.append("activeStatus", true);
 
         var blob = new Blob([file.binary], {type: "text/jpeg"});
-        formData.append("studentPhoto", blob);
+        formData.append("userPhoto", blob);
 
         var request = new XMLHttpRequest();
         request.open("POST", this.adminServiceUrl + "/api/v1/users/create");
@@ -240,7 +252,7 @@ window.addEventListener('load', function () {
 
 
     // image preview
-    document.getElementById("user.attributes.studentPhoto")
+    document.getElementById("user.attributes.userPhoto")
         .addEventListener('change', function () {
             var filesCount = $(this)[0].files.length;
             var textbox = $(this).prev();
@@ -301,9 +313,9 @@ window.addEventListener('load', function () {
             };
         }
     };
-    document.getElementById("user.attributes.studentPhoto")
+    document.getElementById("user.attributes.userPhoto")
         .addEventListener('submit', validateMaxImageFileSize);
-    document.getElementById("user.attributes.studentPhoto")
+    document.getElementById("user.attributes.userPhoto")
         .addEventListener('change', validateMaxImageFileSize);
 });
 

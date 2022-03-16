@@ -30,7 +30,7 @@
                         <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                     </div>
                     <#if messagesPerField.existsError('password')>
-                        <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}"
+                        <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password'))?no_esc}
                         </span>
@@ -55,7 +55,7 @@
                     </div>
 
                     <#if messagesPerField.existsError('password-confirm')>
-                        <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}"
+                        <span id="input-error-password-confirm" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>
