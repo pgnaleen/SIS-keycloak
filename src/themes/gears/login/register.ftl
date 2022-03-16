@@ -7,7 +7,7 @@
             <div id="kc-form-options" class="col-12 ${properties.kcFormOptionsClass!}">
                 <div class="${properties.kcFormOptionsWrapperClass!}">
                     <span>Already have an account? <a
-                                href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
+                                href="${url.loginUrl}">${kcSanitize(msg("signIn"))?no_esc}</a></span>
                 </div>
             </div>
         </div>
