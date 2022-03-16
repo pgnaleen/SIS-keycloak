@@ -47,7 +47,7 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
                 UserLoginFailureModel userLoginFailure = getUserModel(session, event);
                 if ( userLoginFailure != null && (userLoginFailure.getNumFailures() == 2) ) {
                     logger.info("failure count is 3 setting verify email action");
-//                    user.setEmailVerified(false);
+                    user.setEmailVerified(false);// without this verify email action not working
                     user.addRequiredAction(UserModel.RequiredAction.VERIFY_EMAIL);
 
                     try {
