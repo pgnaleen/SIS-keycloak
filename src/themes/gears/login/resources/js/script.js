@@ -73,7 +73,7 @@ window.addEventListener('load', function () {
     })()
 
     $('#dobDatePicker').datepicker({
-        format: "yyyy-mm-dd",
+        format: "dd/mm/yyyy",
         // todayBtn: "linked",
         clearBtn: true,
         daysOfWeekHighlighted: "0,6",

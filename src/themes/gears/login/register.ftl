@@ -92,7 +92,7 @@
                                id="user.attributes.dob"
                                name="user.attributes.dob"
                                value="${(register.formData['user.attributes.dob']!'')}"
-                               placeholder="yyyy-mm-dd"
+                               placeholder="dd/mm/yyyy"
                                required/>
                         <span class="input-group-append">
                             <span class="input-group-text bg-white">
