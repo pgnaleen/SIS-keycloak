@@ -10,7 +10,7 @@
     height: 100vh;
 }
 
-button, input, optgroup, select, textarea {
+button:not(.toast button), input, optgroup, select, textarea {
     border-radius: 5px !important;
     border: 1px solid #CBD5E1 !important;
     background: #fff !important;
@@ -21,7 +21,7 @@ button, input, optgroup, select, textarea {
     line-height: 18px !important;
 }
 
-[type=button], [type=reset], [type=submit], [type=button], button {
+[type=button]:not(.toast button), [type=reset], [type=submit], button:not(.toast button) {
     background-color: #0055a9 !important;
     border-radius: 50px !important;
     padding: 10px !important;
@@ -232,10 +232,11 @@ a:hover {
 }
 
 .eye-icon {
-    margin-left: -30px !important;
-    margin-top: 15px;
+    right: 10px;
+    top: 17px;
     cursor: pointer;
     z-index: 1;
+    position: absolute;
 }
 
 .field-label {
@@ -257,4 +258,3 @@ a:hover {
     /*width: 100%;*/
     /*flex-direction: row;*/
 }
-

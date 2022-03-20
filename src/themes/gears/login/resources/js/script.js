@@ -72,21 +72,32 @@ window.addEventListener('load', function () {
             })
     })()
 
-    $('#dobDatePicker').datepicker({
-        format: "dd/mm/yyyy",
-        // todayBtn: "linked",
-        clearBtn: true,
-        daysOfWeekHighlighted: "0,6",
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true,
-        // datesDisabled: ['03/06/2022', '03/21/2022'],
-        toggleActive: true,
-        // defaultViewDate: { year: 1977, month: 04, day: 25 }
-    });
+
+    // if kc-attempted-username label is there then it is registered page redirect
+    if (document.getElementById('kc-attempted-username')) {
+        $('.toast').toast('show');
+    }
+
+
+    if (document.getElementById('dobDatePicker')) {
+        $('#dobDatePicker').datepicker({
+            format: "dd/mm/yyyy",
+            // todayBtn: "linked",
+            clearBtn: true,
+            daysOfWeekHighlighted: "0,6",
+            calendarWeeks: true,
+            autoclose: true,
+            todayHighlight: true,
+            // datesDisabled: ['03/06/2022', '03/21/2022'],
+            toggleActive: true,
+            // defaultViewDate: { year: 1977, month: 04, day: 25 }
+        });
+    }
+
 
     // get adminServiceUrl from theme.properties
     this.adminServiceUrl = document.getElementById('adminServiceUrl').textContent;
+
 
     // get lookups and set into selects
     var nameTitleSelect = document.getElementById('user.attributes.nameTitle');

@@ -4,6 +4,9 @@
 package com.ubs;
 
 import org.jboss.logging.Logger;
+import org.keycloak.authentication.AuthenticationFlowContext;
+import org.keycloak.authentication.actiontoken.resetcred.ResetCredentialsActionToken;
+import org.keycloak.common.util.Time;
 import org.keycloak.email.DefaultEmailSenderProvider;
 import org.keycloak.email.EmailException;
 import org.keycloak.email.freemarker.beans.ProfileBean;
@@ -13,8 +16,11 @@ import org.keycloak.events.EventType;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.*;
 import org.keycloak.services.managers.BruteForceProtector;
+import org.keycloak.sessions.AuthenticationSessionCompoundId;
+import org.keycloak.sessions.AuthenticationSessionModel;
 import org.keycloak.theme.FreeMarkerUtil;
 
+import javax.ws.rs.core.UriBuilder;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +55,32 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
                     logger.info("failure count is 3 setting verify email action");
                     user.setEmailVerified(false);// without this verify email action not working
                     user.addRequiredAction(UserModel.RequiredAction.VERIFY_EMAIL);
+//                    user.addRequiredAction(UserModel.RequiredAction.UPDATE_PASSWORD);
+
+
+
+//                    AuthenticationFlowContext context = session.getContext();
+//                    AuthenticationSessionModel authenticationSession = session.getAuthenticationSession();
+//                    int validityInSecs = session.getContext().getRealm().getActionTokenGeneratedByUserLifespan(ResetCredentialsActionToken.TOKEN_TYPE);
+//                    int absoluteExpirationInSecs = Time.currentTime() + validityInSecs;
+
+                    // We send the secret in the email in a link as a query param.
+//                    session.authenticationSessions().getRootAuthenticationSession().getId()
+//                    String authSessionEncodedId = AuthenticationSessionCompoundId.fromAuthSession(authenticationSession).getEncodedId();
+//                    ResetCredentialsActionToken token = new ResetCredentialsActionToken(user.getId(), user.getEmail(), absoluteExpirationInSecs, null, session.getContext().getClient().getClientId());
+//                    String link = UriBuilder
+//                            .fromUri(context.getActionTokenUrl(token.serialize( session, session.getContext().getRealm(), null)))
+//                            .build()
+//                            .toString();
+//                    String link = UriBuilder
+//                            .fromUri(context.getActionTokenUrl(token.serialize( context.getSession(), context.getRealm(), context.getUriInfo())))
+//                            .build()
+//                            .toString();
+
+
+
+
+
 
                     try {
                         Map<String, Object> attributes = new HashMap<>();
@@ -66,10 +98,6 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
                         java.util.logging.Logger.getLogger(AccountLockNotificationEventListenerProvider.class.getName())
                                 .log(Level.SEVERE, null, ex);
                     }
-                }
-
-                if (user != null && !user.isEnabled()) {
-
                 }
             }
 

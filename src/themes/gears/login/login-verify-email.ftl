@@ -8,7 +8,13 @@
         <p class="instruction">
 <#--            ${msg("emailVerifyInstruction2")}-->
             <br/>
-            <a href="${url.loginAction}">${msg("doClickHere")}</a> ${msg("emailVerifyInstruction3")}
+        <div id="kc-form-buttons" class="col-12 ${properties.kcFormButtonsClass!}">
+            <a href="${url.loginAction}">
+            <button class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="button" value="${msg("doSubmitForgotPassword")}">
+                ${msg("emailVerifyInstruction3")}
+            </button>
+            </a>
+        </div>
         </p>
     </#if>
 </@layout.registrationLayout>
