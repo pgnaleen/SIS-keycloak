@@ -448,8 +448,8 @@
                     <input type="checkbox" id="termCheckBox" name="termCheckBox" class="cbox-style">
                 </div>
                 <div class="col-11 px-0">
-                    <span>I agree to the <a href="info.ftl">Terms of service</a> and <a
-                                href="info.ftl">Privacy policy</a>.</span>
+                    <span>I agree to the <a href="${properties.frontEnd!}/#/public/terms-conditions">Terms and condition</a> and <a
+                                href="${properties.frontEnd!}/#/public/privacy-policy">Privacy policy</a>.</span>
                 </div>
             </div>
 

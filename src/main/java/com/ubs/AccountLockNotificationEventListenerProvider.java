@@ -5,6 +5,7 @@ package com.ubs;
 
 import org.jboss.logging.Logger;
 import org.keycloak.authentication.AuthenticationFlowContext;
+import org.keycloak.authentication.AuthenticationProcessor;
 import org.keycloak.authentication.actiontoken.resetcred.ResetCredentialsActionToken;
 import org.keycloak.common.util.Time;
 import org.keycloak.email.DefaultEmailSenderProvider;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
+//                    really we don't need this listener we can set this inside SISBruteForceProtector in service class
 public class AccountLockNotificationEventListenerProvider implements EventListenerProvider {
     private static final Logger logger = Logger.getLogger(AccountLockNotificationEventListenerProvider.class);
     private final KeycloakSession session;
@@ -53,6 +55,7 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
                 UserLoginFailureModel userLoginFailure = getUserModel(session, event);
                 if ( userLoginFailure != null && (userLoginFailure.getNumFailures() == 2) ) {
                     logger.info("failure count is 3 setting verify email action");
+//                    really we don't need this listener we can set this inside SISBruteForceProtector in service class
                     user.setEmailVerified(false);// without this verify email action not working
                     user.addRequiredAction(UserModel.RequiredAction.VERIFY_EMAIL);
 //                    user.addRequiredAction(UserModel.RequiredAction.UPDATE_PASSWORD);
