@@ -25,10 +25,12 @@
                                class="mandatory-field ${properties.kcInputClass!}"
                                autofocus
                                autocomplete="new-password"
+                               onblur="passwordValidation(document.getElementById('password-new'), 'passwordError')"
                                aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
                         />
                         <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                     </div>
+                    <label id="passwordError" class="error-msg"/>
                     <#if messagesPerField.existsError('password')>
                         <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -49,11 +51,12 @@
                                name="password-confirm"
                                class="mandatory-field ${properties.kcInputClass!}"
                                autocomplete="new-password"
+                               onblur="confirmPasswordMatch('password','password-confirm', 'passwordConfirmError')"
                                aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
                         />
                         <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                     </div>
-
+                    <label id="passwordConfirmError" class="error-msg"/>
                     <#if messagesPerField.existsError('password-confirm')>
                         <span id="input-error-password-confirm" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
