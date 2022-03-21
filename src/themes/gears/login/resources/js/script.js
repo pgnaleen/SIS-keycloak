@@ -7,15 +7,155 @@ function registerOnAdmission(adminServiceUrl, realm) {
     this.realm = realm;
 }
 
-// function userEmailValidation() {
-//     const inpObj = document.getElementById("validationCustomUsername");
-//     if (!inpObj.checkValidity()) {
-//         document.getElementById('userEmailValidationSpan').innerHTML="Valid Email is required.";
-//     } else {
-//         document.getElementById('userEmailValidationSpan').innerHTML="";
-//     }
-//
-// }
+
+// date validation
+async function validateDate(inputText) {
+    // date picker takes some time to populate value into input field
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+    // Match the date format through regular expression
+    if (inputText.value.match(dateformat)) {
+        //Test which seperator is used '/' or '-'
+        var opera1 = inputText.value.split('/');
+        var opera2 = inputText.value.split('-');
+        lopera1 = opera1.length;
+        lopera2 = opera2.length;
+        // Extract the string into month, date and year
+        if (lopera1 > 1) {
+            var pdate = inputText.value.split('/');
+        } else if (lopera2 > 1) {
+            var pdate = inputText.value.split('-');
+        }
+        var dd = parseInt(pdate[0]);
+        var mm = parseInt(pdate[1]);
+        var yy = parseInt(pdate[2]);
+        // Create list of days of a month [assume there is no leap year by default]
+        var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        if (mm == 1 || mm > 2) {
+            if (dd > ListofDays[mm - 1]) {
+                document.getElementById('dobError').innerHTML = "Invalid date.";
+                return false;
+            } else {
+                document.getElementById('dobError').innerHTML = "";
+                return true;
+            }
+        }
+        if (mm == 2) {
+            var lyear = false;
+            if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
+                lyear = true;
+            }
+            if ((lyear == false) && (dd >= 29)) {
+                document.getElementById('dobError').innerHTML = "Invalid date.";
+                return false;
+            } else {
+                document.getElementById('dobError').innerHTML = "";
+                return true;
+            }
+            if ((lyear == true) && (dd > 29)) {
+                document.getElementById('dobError').innerHTML = "Invalid date.";
+                return false;
+            } else {
+                document.getElementById('dobError').innerHTML = "";
+                return true;
+            }
+        }
+    } else {
+        document.getElementById('dobError').innerHTML = "Invalid date.";
+        return false;
+    }
+}
+
+
+// email validation
+function userEmailValidation(inputId, errorLabelId) {
+    const emailElement = document.getElementById(inputId);
+    if (!emailElement.checkValidity()) {
+        document.getElementById(errorLabelId).innerHTML="Invalid email. Please enter a valid email";
+    } else {
+        document.getElementById(errorLabelId).innerHTML="";
+    }
+}
+
+
+/*
+
+// email validation this is another validation
+function validateEmailForm() {
+    var x = document.getElementById("email").value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+
+        document.getElementById("lblError").innerHTML = "Invalid email. Please enter a valid email";
+    }
+    else {
+        document.getElementById("lblError").innerHTML = "";
+    }
+}
+function validateParentEmailForm() {
+    var x = document.getElementById("user.attributes.parentEmail").value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+
+        document.getElementById("lblError1").innerHTML = "Invalid email. Please enter a valid email";
+    }
+    else {
+        document.getElementById("lblError1").innerHTML = "";
+    }
+}
+*/
+
+
+function validatePhoneNumber(inputElement, errorLabel) {
+    const regExp = /^\+?\d{10,}$/; // with or without + and more than 10 numbers
+
+    if (!inputElement.value.match(regExp)) {
+        document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+        return false;
+    } else {
+        document.getElementById(errorLabel).innerHTML = "";
+        return true;
+    }
+}
+
+
+function passwordValidation(inputElement, errorLabel) {
+    const regex = /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,30}$/gmu;
+
+    if (!inputElement.value.match(regex)) {
+        document.getElementById(errorLabel).innerHTML = "* Must contain at least 8 Characters!" +
+            "<br>* Must contain at least 1 Number!" +
+            "<br>* Must contain at least 1 in Lower Case!" +
+            "<br>* Must contain at least 1 in Upper Case!" +
+            "<br>* Must contain at least 1 Special Character!" +
+            "<br>* Must contain at most 30 Characters!";
+        return false;
+    } else {
+        document.getElementById(errorLabel).innerHTML = "";
+        return true;
+    }
+}
+
+
+function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabel) {
+    console.log(document.getElementById(passwordElement).value);
+    console.log(document.getElementById(passwordConfirmElement).value);
+
+    if (!(document.getElementById(passwordElement).value ===
+        document.getElementById(passwordConfirmElement).value)){
+
+        document.getElementById(errorLabel).innerHTML = "The password confirmation does not match.";
+
+        return false;
+    } else {
+        document.getElementById(errorLabel).innerHTML = "";
+        return true;
+    }
+}
+
 
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
@@ -84,6 +224,7 @@ window.addEventListener('load', function () {
             format: "dd/mm/yyyy",
             // todayBtn: "linked",
             clearBtn: true,
+            endDate: 'today',
             daysOfWeekHighlighted: "0,6",
             calendarWeeks: true,
             autoclose: true,

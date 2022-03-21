@@ -93,15 +93,18 @@
                                name="user.attributes.dob"
                                value="${(register.formData['user.attributes.dob']!'')}"
                                placeholder="dd/mm/yyyy"
+                               onblur="validateDate(document.getElementById('user.attributes.dob'))"
                                required/>
                         <span class="input-group-append">
                             <span class="input-group-text bg-white">
-                                <i class="fa fa-calendar p-1"></i>
+                                <i class="fa fa-calendar p-1"
+                                   onblur="validateDate(document.getElementById('user.attributes.dob'))"></i>
                             </span>
                         </span>
                         <div class="invalid-feedback">
                             Date of Birth is required.
                         </div>
+
                     </div>
                 </div>
 
@@ -130,6 +133,8 @@
                         </#if>
                     </div>
                 </div>
+
+                <label id="dobError" class="error-msg"></label>
             </div>
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
@@ -179,7 +184,6 @@
                     <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <#--                    <div class="input-group has-validation">-->
                     <input type="email"
                            id="email"
                            class="mandatory-field ${properties.kcInputClass!}"
@@ -188,13 +192,12 @@
                            autocomplete="email"
                            maxlength="30"
                            aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
-                            <#--                           onfocusout="userEmailValidation()"-->
+                           onblur="userEmailValidation('email','emailError')"
                            required/>
-                    <#--                    <span class="error-msg" id="userEmailValidationSpan"></span>-->
+                    <label id="emailError" class="error-msg"></label>
                     <div class="invalid-feedback">
                         Valid Email is required.
                     </div>
-                    <#--                </div>-->
                     <#if messagesPerField.existsError('email')>
                         <span id="input-error-email" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -244,11 +247,13 @@
                                    name="password"
                                    autocomplete="new-password"
                                    maxlength="30"
+                                   onblur="passwordValidation(document.getElementById('password'), 'passwordError')"
                                    aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
                                    required/>
                             <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         </div>
                     </div>
+                    <label id="passwordError" class="error-msg"/>
                     <div class="invalid-feedback">
                         Password is required.
                     </div>
@@ -273,10 +278,12 @@
                                    class="mandatory-field ${properties.kcInputClass!}"
                                    name="password-confirm"
                                    maxlength="30"
+                                   onblur="confirmPasswordMatch('password','password-confirm', 'passwordConfirmError')"
                                    aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
                                    required/>
                             <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         </div>
+                        <label id="passwordConfirmError" class="error-msg"/>
                         <div class="invalid-feedback">
                             Password Confirmation is required.
                         </div>
@@ -348,9 +355,11 @@
                         <input type="text" id="user.attributes.parentPhone" class="${properties.kcInputClass!}"
                                name="user.attributes.parentPhone"
                                value="${(register.formData['user.attributes.parentPhone']!'')}"
+                               onblur="validatePhoneNumber(document.getElementById('user.attributes.parentPhone'),
+                                                            'phoneNumberError')"
                                aria-invalid="<#if messagesPerField.existsError('parentPhone')>true</#if>"
                         />
-
+                        <label id="phoneNumberError" class="error-msg"/>
                         <#if messagesPerField.existsError('parentPhone')>
                             <span id="input-error-parentPhone" class="${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -371,8 +380,11 @@
                                class="mandatory-field ${properties.kcInputClass!}"
                                name="user.attributes.parentMobile"
                                value="${(register.formData['user.attributes.parentMobile']!'')}"
+                               onblur="validatePhoneNumber(document.getElementById('user.attributes.parentMobile'),
+                                                            'mobileNumberError')"
                                aria-invalid="<#if messagesPerField.existsError('parentMobile')>true</#if>"
                                required/>
+                        <label id="mobileNumberError" class="error-msg"/>
                         <div class="invalid-feedback">
                             Parent Mobile is required.
                         </div>
@@ -397,10 +409,14 @@
                            name="user.attributes.parentEmail"
                            value="${(register.formData['user.attributes.parentEmail']!'')}"
                            aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
+                           onblur="userEmailValidation('user.attributes.parentEmail', 'lblErrorParentEmail')"
                            required/>
+                    <label id="lblErrorParentEmail" class="error-msg"></label>
                     <div class="invalid-feedback">
                         Valid Parent Email is required.
                     </div>
+                    <#--                    <input type="text" name="email" id="txtEmail" onblur="validateForm()">-->
+                    <#--                    <label id="lblError" style="color:red"></label>-->
                     <#if messagesPerField.existsError('parentEmail')>
                         <span id="input-error-parentEmail" class="${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -448,7 +464,8 @@
                     <input type="checkbox" id="termCheckBox" name="termCheckBox" class="cbox-style">
                 </div>
                 <div class="col-11 px-0">
-                    <span>I agree to the <a href="${properties.frontEnd!}/#/public/terms-conditions">Terms and condition</a> and <a
+                    <span>I agree to the <a
+                                href="${properties.frontEnd!}/#/public/terms-conditions">Terms and condition</a> and <a
                                 href="${properties.frontEnd!}/#/public/privacy-policy">Privacy policy</a>.</span>
                 </div>
             </div>

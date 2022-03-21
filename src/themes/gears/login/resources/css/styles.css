@@ -229,6 +229,7 @@ a:hover {
 
 .error-msg {
     color: #dc2626;
+    font-size: 13px;
 }
 
 .eye-icon {
@@ -240,14 +241,8 @@ a:hover {
 }
 
 .field-label {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height */
-
-    color: #64748B;
+    font: 400 0.875rem/1.2857142857 Source Sans Pro,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+    letter-spacing: normal;
 }
 
 .input-group {/*align date text box with icon*/
