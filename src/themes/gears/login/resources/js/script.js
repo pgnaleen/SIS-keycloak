@@ -35,9 +35,11 @@ async function validateDate(inputText) {
         if (mm == 1 || mm > 2) {
             if (dd > ListofDays[mm - 1]) {
                 document.getElementById('dobError').innerHTML = "Invalid date.";
+                inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
                 document.getElementById('dobError').innerHTML = "";
+                inputText.style.border = "";
                 return true;
             }
         }
@@ -48,21 +50,26 @@ async function validateDate(inputText) {
             }
             if ((lyear == false) && (dd >= 29)) {
                 document.getElementById('dobError').innerHTML = "Invalid date.";
+                inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
                 document.getElementById('dobError').innerHTML = "";
+                inputText.style.border = "";
                 return true;
             }
             if ((lyear == true) && (dd > 29)) {
                 document.getElementById('dobError').innerHTML = "Invalid date.";
+                inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
                 document.getElementById('dobError').innerHTML = "";
+                inputText.style.border = "";
                 return true;
             }
         }
     } else {
         document.getElementById('dobError').innerHTML = "Invalid date.";
+        inputText.style.border = "thin solid #dc2626";
         return false;
     }
 }
@@ -70,11 +77,15 @@ async function validateDate(inputText) {
 
 // email validation
 function userEmailValidation(inputId, errorLabelId) {
+    const regex = /[!"`'#%&,:;<>={}~$()*+\/\\?\[\]^|]+/;
+
     const emailElement = document.getElementById(inputId);
-    if (!emailElement.checkValidity()) {
+    if (!emailElement.checkValidity() || emailElement.value.match(regex)) {
         document.getElementById(errorLabelId).innerHTML="Invalid email. Please enter a valid email";
+        document.getElementById(inputId).style.border = "thin solid #dc2626";
     } else {
         document.getElementById(errorLabelId).innerHTML="";
+        document.getElementById(inputId).style.border = "";
     }
 }
 
@@ -114,44 +125,67 @@ function validatePhoneNumber(inputElement, errorLabel) {
 
     if (!inputElement.value.match(regExp)) {
         document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+        inputElement.style.border = "thin solid #dc2626";
         return false;
     } else {
         document.getElementById(errorLabel).innerHTML = "";
+        inputElement.style.border = "";
         return true;
     }
 }
 
 
 function passwordValidation(inputElement, errorLabel) {
-    const regex = /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,30}$/gmu;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
 
-    if (!inputElement.value.match(regex)) {
-        document.getElementById(errorLabel).innerHTML = "* Must contain at least 8 Characters!" +
-            "<br>* Must contain at least 1 Number!" +
-            "<br>* Must contain at least 1 in Lower Case!" +
-            "<br>* Must contain at least 1 in Upper Case!" +
-            "<br>* Must contain at least 1 Special Character!" +
-            "<br>* Must contain at most 30 Characters!";
+    if (inputElement.value != '' && !inputElement.value.match(regex)) {
+        document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+        inputElement.style.border = "thin solid #dc2626";
         return false;
     } else {
         document.getElementById(errorLabel).innerHTML = "";
+        inputElement.style.border = "";
+    }
+
+    if (inputElement.value === '') {
+        document.getElementById(errorLabel).innerHTML = "Password is required";
+        inputElement.style.border = "thin solid #dc2626";
+        return false;
+    }
+
+    return false;
+}
+
+
+// general blank error message for required fields
+function isRequired(inputElement, errorLabel, errorMsg) {
+    if (inputElement.value === '') {
+        document.getElementById(errorLabel).innerHTML = errorMsg;
+        inputElement.style.border = "thin solid #dc2626";
+
+        return false;
+    } else {
+        document.getElementById(errorLabel).innerHTML = '';
+        inputElement.style.border = "";
         return true;
     }
 }
 
-
 function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabel) {
-    console.log(document.getElementById(passwordElement).value);
-    console.log(document.getElementById(passwordConfirmElement).value);
-
     if (!(document.getElementById(passwordElement).value ===
         document.getElementById(passwordConfirmElement).value)){
 
         document.getElementById(errorLabel).innerHTML = "The password confirmation does not match.";
+        document.getElementById(passwordConfirmElement).style.border = "thin solid #dc2626";
 
+        return false;
+    } else if (document.getElementById(passwordConfirmElement).value === '') {
+        document.getElementById(errorLabel).innerHTML = "Confirm Password is required.";
+        document.getElementById(passwordConfirmElement).style.border = "thin solid #dc2626";
         return false;
     } else {
         document.getElementById(errorLabel).innerHTML = "";
+        document.getElementById(passwordConfirmElement).style.border = "";
         return true;
     }
 }
@@ -192,7 +226,26 @@ window.addEventListener('load', function () {
     });
 
 
-    // bootstrap form field validations
+    // this is for template general ftl. if error message is for invalid password then display password error instead this message
+    $(document).ready(function () {
+        // this is for password reset
+        if (document.getElementById('templateError') &&
+            document.getElementById('templateError').textContent.includes('Invalid password:')) {
+
+            document.getElementById('templateError').innerHTML = "";
+            document.getElementById('passwordError').innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+        }
+        // this is for register password
+        if (document.getElementById('input-error-password') &&
+            document.getElementById('input-error-password').textContent.includes('Invalid password:')) {
+
+            document.getElementById('input-error-password').innerHTML = "";
+            document.getElementById('passwordError').innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+        }
+    });
+
+
+    // // bootstrap form field validations
     (function () {
         'use strict'
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -203,19 +256,23 @@ window.addEventListener('load', function () {
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
                     if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
+                        event.preventDefault();
+                        event.stopPropagation();
+                        document.getElementById('kc-login').disabled = false;
                     }
 
-                    form.classList.add('was-validated')
+                    form.classList.add('was-validated');
                 }, false)
             })
     })()
 
 
     // if kc-attempted-username label is there then it is registered page redirect
-    if (document.getElementById('kc-attempted-username')) {
+    if (document.getElementById('kc-attempted-username') &&
+        document.getElementById('kc-registration-container')) {
         $('.toast').toast('show');
+        // need to hide this register link as if user clicked on register link login page will be malfunctioned.
+        document.getElementById('kc-registration-container').style.visibility="hidden";
     }
 
 

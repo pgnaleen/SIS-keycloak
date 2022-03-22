@@ -33,9 +33,12 @@
                                            value="${(login.username!'')}"
                                            type="text" autofocus
                                            autocomplete="off"
+                                           onblur="isRequired(document.getElementById('username'),
+                                           'usernameError', 'Username is required.')"
                                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                                            required
                                     />
+                                    <label id="usernameError" class="error-msg"/>
                                     <div class="invalid-feedback">
                                         Username is required.
                                     </div>
@@ -60,12 +63,15 @@
                                            class="mandatory-field ${properties.kcInputClass!}"
                                            name="password"
                                            type="password" autocomplete="off"
+                                           onblur="isRequired(document.getElementById('password'),
+                                           'passwordError', 'Password is required.')"
                                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                                            required/>
                                     <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    <div class="invalid-feedback">
-                                        Password is required.
-                                    </div>
+                                </div>
+                                <label id="passwordError" class="error-msg"/>
+                                <div class="invalid-feedback">
+                                    Password is required.
                                 </div>
                             </div>
                         </div>

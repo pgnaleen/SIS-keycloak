@@ -65,8 +65,11 @@
                            value="${(register.formData.lastName!'')}"
                            autocomplete="user.attributes.fullName"
                            maxlength="100"
+                           onblur="isRequired(document.getElementById('user.attributes.fullName'),
+                                           'fullNameError', 'Full name is required.')"
                            aria-invalid="<#if messagesPerField.existsError('fullName')>true</#if>"
                            required/>
+                    <label id="fullNameError" class="error-msg"/>
                     <div class="invalid-feedback">
                         Full Name is required.
                     </div>
@@ -92,7 +95,6 @@
                                id="user.attributes.dob"
                                name="user.attributes.dob"
                                value="${(register.formData['user.attributes.dob']!'')}"
-                               placeholder="dd/mm/yyyy"
                                onblur="validateDate(document.getElementById('user.attributes.dob'))"
                                required/>
                         <span class="input-group-append">
@@ -219,8 +221,11 @@
                                value="${(register.formData.username!'')}"
                                autocomplete="username"
                                maxlength="30"
+                               onblur="isRequired(document.getElementById('username'),
+                                           'usernameError', 'Username is required.')"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
                                required/>
+                        <label id="usernameError" class="error-msg"/>
                         <div class="invalid-feedback">
                             Username is required.
                         </div>
@@ -354,6 +359,7 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="text" id="user.attributes.parentPhone" class="${properties.kcInputClass!}"
                                name="user.attributes.parentPhone"
+                               maxlength="20"
                                value="${(register.formData['user.attributes.parentPhone']!'')}"
                                onblur="validatePhoneNumber(document.getElementById('user.attributes.parentPhone'),
                                                             'phoneNumberError')"
@@ -379,6 +385,7 @@
                                id="user.attributes.parentMobile"
                                class="mandatory-field ${properties.kcInputClass!}"
                                name="user.attributes.parentMobile"
+                               maxlength="20"
                                value="${(register.formData['user.attributes.parentMobile']!'')}"
                                onblur="validatePhoneNumber(document.getElementById('user.attributes.parentMobile'),
                                                             'mobileNumberError')"

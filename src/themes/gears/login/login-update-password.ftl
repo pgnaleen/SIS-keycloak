@@ -51,7 +51,7 @@
                                name="password-confirm"
                                class="mandatory-field ${properties.kcInputClass!}"
                                autocomplete="new-password"
-                               onblur="confirmPasswordMatch('password','password-confirm', 'passwordConfirmError')"
+                               onblur="confirmPasswordMatch('password-new','password-confirm', 'passwordConfirmError')"
                                aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
                         />
                         <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
