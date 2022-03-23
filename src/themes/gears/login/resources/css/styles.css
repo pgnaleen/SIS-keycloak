@@ -232,12 +232,19 @@ a:hover {
     font-size: 13px;
 }
 
+/*.eye-icon {*/
+/*    right: 10px;*/
+/*    top: 17px;*/
+/*    cursor: pointer;*/
+/*    z-index: 1;*/
+/*    position: absolute;*/
+/*}*/
+
 .eye-icon {
-    right: 10px;
-    top: 17px;
+    margin-left: -30px !important;
+    margin-top: 15px;
     cursor: pointer;
     z-index: 1;
-    position: absolute;
 }
 
 .field-label {

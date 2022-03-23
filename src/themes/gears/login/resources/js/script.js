@@ -10,6 +10,10 @@ function registerOnAdmission(adminServiceUrl, realm) {
 
 // date validation
 async function validateDate(inputText) {
+    // here as bootstrap field validation no align correctly manual label added. that need to be emptyed as well.
+    document.getElementById('registerDatePicker').innerHTML = '';
+
+
     // date picker takes some time to populate value into input field
     await new Promise(resolve => setTimeout(resolve, 200));
 
@@ -34,11 +38,11 @@ async function validateDate(inputText) {
         var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         if (mm == 1 || mm > 2) {
             if (dd > ListofDays[mm - 1]) {
-                document.getElementById('dobError').innerHTML = "Invalid date.";
+                document.getElementById('registerDatePicker').innerHTML = "Invalid date.";
                 inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
-                document.getElementById('dobError').innerHTML = "";
+                document.getElementById('registerDatePicker').innerHTML = "";
                 inputText.style.border = "";
                 return true;
             }
@@ -49,26 +53,26 @@ async function validateDate(inputText) {
                 lyear = true;
             }
             if ((lyear == false) && (dd >= 29)) {
-                document.getElementById('dobError').innerHTML = "Invalid date.";
+                document.getElementById('registerDatePicker').innerHTML = "Invalid date.";
                 inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
-                document.getElementById('dobError').innerHTML = "";
+                document.getElementById('registerDatePicker').innerHTML = "";
                 inputText.style.border = "";
                 return true;
             }
             if ((lyear == true) && (dd > 29)) {
-                document.getElementById('dobError').innerHTML = "Invalid date.";
+                document.getElementById('registerDatePicker').innerHTML = "Invalid date.";
                 inputText.style.border = "thin solid #dc2626";
                 return false;
             } else {
-                document.getElementById('dobError').innerHTML = "";
+                document.getElementById('registerDatePicker').innerHTML = "";
                 inputText.style.border = "";
                 return true;
             }
         }
     } else {
-        document.getElementById('dobError').innerHTML = "Invalid date.";
+        document.getElementById('registerDatePicker').innerHTML = "Invalid date.";
         inputText.style.border = "thin solid #dc2626";
         return false;
     }
@@ -78,10 +82,19 @@ async function validateDate(inputText) {
 // email validation
 function userEmailValidation(inputId, errorLabelId) {
     const regex = /[!"`'#%&,:;<>={}~$()*+\/\\?\[\]^|]+/;
-
     const emailElement = document.getElementById(inputId);
-    if (!emailElement.checkValidity() || emailElement.value.match(regex)) {
-        document.getElementById(errorLabelId).innerHTML="Invalid email. Please enter a valid email";
+
+    if (emailElement.value === '') {
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabelId).innerHTML = "Invalid email. Please enter a valid email";
+        }
+
+        document.getElementById(inputId).style.border = "thin solid #dc2626";
+    } else if (!emailElement.checkValidity() || emailElement.value.match(regex)) {
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabelId).innerHTML = "Invalid email. Please enter a valid email";
+        }
+
         document.getElementById(inputId).style.border = "thin solid #dc2626";
     } else {
         document.getElementById(errorLabelId).innerHTML="";
@@ -90,41 +103,23 @@ function userEmailValidation(inputId, errorLabelId) {
 }
 
 
-/*
-
-// email validation this is another validation
-function validateEmailForm() {
-    var x = document.getElementById("email").value;
-    var atpos = x.indexOf("@");
-    var dotpos = x.lastIndexOf(".");
-    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
-
-        document.getElementById("lblError").innerHTML = "Invalid email. Please enter a valid email";
-    }
-    else {
-        document.getElementById("lblError").innerHTML = "";
-    }
-}
-function validateParentEmailForm() {
-    var x = document.getElementById("user.attributes.parentEmail").value;
-    var atpos = x.indexOf("@");
-    var dotpos = x.lastIndexOf(".");
-    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
-
-        document.getElementById("lblError1").innerHTML = "Invalid email. Please enter a valid email";
-    }
-    else {
-        document.getElementById("lblError1").innerHTML = "";
-    }
-}
-*/
-
-
 function validatePhoneNumber(inputElement, errorLabel) {
     const regExp = /^\+?\d{10,}$/; // with or without + and more than 10 numbers
 
-    if (!inputElement.value.match(regExp)) {
+    if (inputElement.value === '') {
+        if (!document.getElementsByClassName('was-validated')[0]) {// this should be this long error as it necessary at very first register page
+            document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+        } else {
+            document.getElementById(errorLabel).innerHTML = "";
+        }
+
+        inputElement.style.border = "thin solid #dc2626";
+        return false;
+    } else if (!inputElement.value.match(regExp)) {
+        // if (!document.getElementsByClassName('was-validated')[0]) {// no need to check bootstrap validation as bootstrap error go away when data is there
         document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+        // }
+
         inputElement.style.border = "thin solid #dc2626";
         return false;
     } else {
@@ -139,7 +134,10 @@ function passwordValidation(inputElement, errorLabel) {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
 
     if (inputElement.value != '' && !inputElement.value.match(regex)) {
+        // if (!document.getElementsByClassName('was-validated')[0]) {
         document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+        // }
+
         inputElement.style.border = "thin solid #dc2626";
         return false;
     } else {
@@ -148,7 +146,10 @@ function passwordValidation(inputElement, errorLabel) {
     }
 
     if (inputElement.value === '') {
-        document.getElementById(errorLabel).innerHTML = "Password is required";
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabel).innerHTML = "Password is required";
+        }
+
         inputElement.style.border = "thin solid #dc2626";
         return false;
     }
@@ -156,20 +157,6 @@ function passwordValidation(inputElement, errorLabel) {
     return false;
 }
 
-
-// general blank error message for required fields
-function isRequired(inputElement, errorLabel, errorMsg) {
-    if (inputElement.value === '') {
-        document.getElementById(errorLabel).innerHTML = errorMsg;
-        inputElement.style.border = "thin solid #dc2626";
-
-        return false;
-    } else {
-        document.getElementById(errorLabel).innerHTML = '';
-        inputElement.style.border = "";
-        return true;
-    }
-}
 
 function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabel) {
     if (!(document.getElementById(passwordElement).value ===
@@ -180,7 +167,9 @@ function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabe
 
         return false;
     } else if (document.getElementById(passwordConfirmElement).value === '') {
-        document.getElementById(errorLabel).innerHTML = "Confirm Password is required.";
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabel).innerHTML = "Confirm Password is required.";
+        }
         document.getElementById(passwordConfirmElement).style.border = "thin solid #dc2626";
         return false;
     } else {
@@ -191,19 +180,37 @@ function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabe
 }
 
 
+// general blank error message for required fields
+function isRequired(inputElement, errorLabel, errorMsg) {
+
+    if (inputElement.value === '') {
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabel).innerHTML = errorMsg;
+        }
+        inputElement.style.border = "thin solid #dc2626";
+
+        return false;
+    } else {
+        document.getElementById(errorLabel).innerHTML = '';
+        inputElement.style.border = "";
+        return true;
+    }
+}
+
+
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
 window.addEventListener('load', function () {
 
     $(document).ready(function() {
-        $("#show_hide_password a").on('click', function(event) {
+        $("#show_hide_password").on('click', function(event) {
             event.preventDefault();
-            if($('#show_hide_password input').attr("type") == "text"){
-                $('#show_hide_password input').attr('type', 'password');
+            if($('#password').attr("type") == "text"){
+                $('#password').attr('type', 'password');
                 $('#show_hide_password svg').addClass( "fa-eye-slash" );
                 $('#show_hide_password svg').removeClass( "fa-eye" );
-            }else if($('#show_hide_password input').attr("type") == "password"){
-                $('#show_hide_password input').attr('type', 'text');
+            }else if($('#password').attr("type") == "password"){
+                $('#password').attr('type', 'text');
                 $('#show_hide_password svg').removeClass( "fa-eye-slash" );
                 $('#show_hide_password svg').addClass( "fa-eye" );
             }
@@ -211,14 +218,14 @@ window.addEventListener('load', function () {
     });
 
     $(document).ready(function() {
-        $("#show_hide_confirm_password a").on('click', function(event) {
+        $("#show_hide_confirm_password").on('click', function(event) {
             event.preventDefault();
-            if($('#show_hide_confirm_password input').attr("type") == "text"){
-                $('#show_hide_confirm_password input').attr('type', 'password');
+            if($('#password-confirm').attr("type") == "text"){
+                $('#password-confirm').attr('type', 'password');
                 $('#show_hide_confirm_password svg').addClass( "fa-eye-slash" );
                 $('#show_hide_confirm_password svg').removeClass( "fa-eye" );
-            }else if($('#show_hide_confirm_password input').attr("type") == "password"){
-                $('#show_hide_confirm_password input').attr('type', 'text');
+            }else if($('#password-confirm').attr("type") == "password"){
+                $('#password-confirm').attr('type', 'text');
                 $('#show_hide_confirm_password svg').removeClass( "fa-eye-slash" );
                 $('#show_hide_confirm_password svg').addClass( "fa-eye" );
             }
@@ -258,7 +265,44 @@ window.addEventListener('load', function () {
                     if (!form.checkValidity()) {
                         event.preventDefault();
                         event.stopPropagation();
-                        document.getElementById('kc-login').disabled = false;
+
+                        // if these lines are not there then both field empty and bootstrap errors will be displayed
+                        // when user submitted with fields errors.
+                        if (document.getElementById('kc-login')) {
+                            document.getElementById('kc-login').disabled = false;
+                        }
+
+                        if (document.getElementById('fullNameError')) {
+                            document.getElementById('fullNameError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('registerDatePicker')) {
+                            document.getElementById('registerDatePicker').innerHTML = 'Date of Birth is required.';
+                        }
+
+                        if (document.getElementById('emailError')) {
+                            document.getElementById('emailError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('usernameError')) {
+                            document.getElementById('usernameError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('passwordError')) {
+                            document.getElementById('passwordError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('passwordConfirmError')) {
+                            document.getElementById('passwordConfirmError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('mobileNumberError')) {
+                            document.getElementById('mobileNumberError').innerHTML = '';
+                        }
+
+                        if (document.getElementById('lblErrorParentEmail')) {
+                            document.getElementById('lblErrorParentEmail').innerHTML = '';
+                        }
                     }
 
                     form.classList.add('was-validated');

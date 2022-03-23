@@ -69,10 +69,12 @@
                                            'fullNameError', 'Full name is required.')"
                            aria-invalid="<#if messagesPerField.existsError('fullName')>true</#if>"
                            required/>
-                    <label id="fullNameError" class="error-msg"/>
+                    <#--                    this bootstrap error message should be at right next to input element-->
                     <div class="invalid-feedback">
                         Full Name is required.
                     </div>
+                    <label id="fullNameError" class="error-msg"/>
+
                     <#if messagesPerField.existsError('fullName')>
                         <span id="input-error-fullname" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -103,11 +105,13 @@
                                    onblur="validateDate(document.getElementById('user.attributes.dob'))"></i>
                             </span>
                         </span>
-                        <div class="invalid-feedback">
-                            Date of Birth is required.
-                        </div>
+                        <#-- this bootstrap validation not align properly. so added manual error here. that need to be emptied as well-->
+                        <#--                        <div class="invalid-feedback">-->
+                        <#--                            Date of Birth is required.-->
+                        <#--                        </div>-->
 
                     </div>
+                    <label id="registerDatePicker" class="error-msg"/>
                 </div>
 
                 <div class="col-6 ${properties.kcFormGroupClass!}">
@@ -135,8 +139,6 @@
                         </#if>
                     </div>
                 </div>
-
-                <label id="dobError" class="error-msg"></label>
             </div>
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
@@ -196,10 +198,11 @@
                            aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
                            onblur="userEmailValidation('email','emailError')"
                            required/>
-                    <label id="emailError" class="error-msg"></label>
                     <div class="invalid-feedback">
                         Valid Email is required.
                     </div>
+                    <label id="emailError" class="error-msg"></label>
+
                     <#if messagesPerField.existsError('email')>
                         <span id="input-error-email" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -225,10 +228,11 @@
                                            'usernameError', 'Username is required.')"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
                                required/>
-                        <label id="usernameError" class="error-msg"/>
                         <div class="invalid-feedback">
                             Username is required.
                         </div>
+                        <label id="usernameError" class="error-msg"/>
+
                         <#if messagesPerField.existsError('username')>
                             <span id="input-error-username" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -245,23 +249,24 @@
                         <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <div class="input-group" id="show_hide_password">
-                            <input type="password"
-                                   id="password"
-                                   class="mandatory-field ${properties.kcInputClass!}"
-                                   name="password"
-                                   autocomplete="new-password"
-                                   maxlength="30"
-                                   onblur="passwordValidation(document.getElementById('password'), 'passwordError')"
-                                   aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                                   required/>
-                            <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        <#--                        <div class="input-group" id="show_hide_password">-->
+                        <input type="password"
+                               id="password"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="password"
+                               autocomplete="new-password"
+                               maxlength="30"
+                               onblur="passwordValidation(document.getElementById('password'), 'passwordError')"
+                               aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
+                               required/>
+                        <a id="show_hide_password" class="eye-icon" href=""><i class="fa fa-eye-slash"
+                                                                               aria-hidden="true"></i></a>
+                        <#--                        </div>-->
+                        <div class="invalid-feedback">
+                            Password is required.
                         </div>
                     </div>
                     <label id="passwordError" class="error-msg"/>
-                    <div class="invalid-feedback">
-                        Password is required.
-                    </div>
 
                     <#if messagesPerField.existsError('password')>
                         <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
@@ -277,29 +282,32 @@
                                class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                     </div>
                     <div class="col-12 ${properties.kcInputWrapperClass!}">
-                        <div class="input-group" id="show_hide_confirm_password">
-                            <input type="password"
-                                   id="password-confirm"
-                                   class="mandatory-field ${properties.kcInputClass!}"
-                                   name="password-confirm"
-                                   maxlength="30"
-                                   onblur="confirmPasswordMatch('password','password-confirm', 'passwordConfirmError')"
-                                   aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                                   required/>
-                            <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                        </div>
-                        <label id="passwordConfirmError" class="error-msg"/>
+                        <#--                        <div class="input-group" id="">-->
+                        <input type="password"
+                               id="password-confirm"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="password-confirm"
+                               maxlength="30"
+                               onblur="confirmPasswordMatch('password','password-confirm', 'passwordConfirmError')"
+                               aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
+                               required/>
+                        <a id="show_hide_confirm_password" class="eye-icon" href=""><i class="fa fa-eye-slash"
+                                                                                       aria-hidden="true"></i></a>
                         <div class="invalid-feedback">
-                            Password Confirmation is required.
+                            Confirm Password is required.
                         </div>
-                        <#if messagesPerField.existsError('password-confirm')>
-                            <span id="input-error-password-confirm"
-                                  class="error-msg ${properties.kcInputErrorMessageClass!}"
-                                  aria-live="polite">
+                        <#--                        </div>-->
+                    </div>
+                    <label id="passwordConfirmError" class="error-msg"/>
+
+                    <#if messagesPerField.existsError('password-confirm')>
+                        <span id="input-error-password-confirm"
+                              class="error-msg ${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>
-                        </#if>
-                    </div>
+                    </#if>
+
                 </div>
             </#if>
 
@@ -391,10 +399,11 @@
                                                             'mobileNumberError')"
                                aria-invalid="<#if messagesPerField.existsError('parentMobile')>true</#if>"
                                required/>
-                        <label id="mobileNumberError" class="error-msg"/>
                         <div class="invalid-feedback">
                             Parent Mobile is required.
                         </div>
+                        <label id="mobileNumberError" class="error-msg"/>
+
                         <#if messagesPerField.existsError('parentMobile')>
                             <span id="input-error-parentMobile" class="${properties.kcInputErrorMessageClass!}"
                                   aria-live="polite">
@@ -418,10 +427,10 @@
                            aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
                            onblur="userEmailValidation('user.attributes.parentEmail', 'lblErrorParentEmail')"
                            required/>
-                    <label id="lblErrorParentEmail" class="error-msg"></label>
                     <div class="invalid-feedback">
                         Valid Parent Email is required.
                     </div>
+                    <label id="lblErrorParentEmail" class="error-msg"></label>
                     <#--                    <input type="text" name="email" id="txtEmail" onblur="validateForm()">-->
                     <#--                    <label id="lblError" style="color:red"></label>-->
                     <#if messagesPerField.existsError('parentEmail')>

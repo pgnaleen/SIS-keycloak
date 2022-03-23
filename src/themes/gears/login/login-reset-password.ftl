@@ -15,16 +15,19 @@
                     <label for="username" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="text"
+                    <input type="email"
                            id="username"
                            name="username"
                            class="mandatory-field ${properties.kcInputClass!}"
-                           autofocus
                            value="${(auth.attemptedUsername!'')}"
+<#--                           onblur="isRequired(document.getElementById('username'), 'usernameError', 'Email address is required.')"-->
+                            onblur="userEmailValidation('username', 'usernameError')"
                            aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
+                    <label id="usernameError" class="error-msg"/>
                     <#if messagesPerField.existsError('username')>
-                        <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                    ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                        <span id="input-error-username" class="error-msg ${properties.kcInputErrorMessageClass!}" aria-live="polite">
+<#--                                    ${kcSanitize(messagesPerField.get('username'))?no_esc}-->
+                            Email address is required.
                         </span>
                     </#if>
                 </div>

@@ -14,7 +14,8 @@
         <div id="kc-form">
             <div id="kc-form-wrapper">
                 <#if realm.password>
-                    <form class="g-3 needs-validation" id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}"
+                    <form class="g-3 needs-validation" id="kc-form-login" onsubmit="login.disabled = true; return true;"
+                          action="${url.loginAction}"
                           method="post" novalidate>
                         <div class="row my-2 ${properties.kcFormGroupClass!}">
                             <div class="col-12">
@@ -31,21 +32,23 @@
                                            class="mandatory-field ${properties.kcInputClass!}"
                                            name="username"
                                            value="${(login.username!'')}"
-                                           type="text" autofocus
+                                           type="text"
                                            autocomplete="off"
                                            onblur="isRequired(document.getElementById('username'),
-                                           'usernameError', 'Username is required.')"
+                                           'usernameError', 'Username or Email address is required.')"
                                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                                            required
                                     />
-                                    <label id="usernameError" class="error-msg"/>
                                     <div class="invalid-feedback">
-                                        Username is required.
+                                        Username or Email address is required.
                                     </div>
+                                    <label id="usernameError" class="error-msg"/>
+
                                     <#if messagesPerField.existsError('username','password')>
                                         <span id="input-error" class="error-msg ${properties.kcInputErrorMessageClass!}"
                                               aria-live="polite">
-                                        ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
+<#--                                        ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}-->
+                                            Invalid Username/Email address or password
                                 </span>
                                     </#if>
                                 </#if>
@@ -57,22 +60,23 @@
                                 <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                             </div>
                             <div class="col-12">
-                                <div class="input-group" id="show_hide_password">
-                                    <input tabindex="2"
-                                           id="password"
-                                           class="mandatory-field ${properties.kcInputClass!}"
-                                           name="password"
-                                           type="password" autocomplete="off"
-                                           onblur="isRequired(document.getElementById('password'),
+                                <#--                                <div class="input-group" id="show_hide_password">-->
+                                <input tabindex="1"
+                                       id="password"
+                                       class="mandatory-field ${properties.kcInputClass!}"
+                                       name="password"
+                                       type="password" autocomplete="off"
+                                       onblur="isRequired(document.getElementById('password'),
                                            'passwordError', 'Password is required.')"
-                                           aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
-                                           required/>
-                                    <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                </div>
-                                <label id="passwordError" class="error-msg"/>
+                                       aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
+                                       required/>
+                                <a id="show_hide_password" class="eye-icon" href=""><i class="fa fa-eye-slash"
+                                                                                       aria-hidden="true"></i></a>
                                 <div class="invalid-feedback">
                                     Password is required.
                                 </div>
+                                <label id="passwordError" class="error-msg"/>
+                                <#--                                </div>-->
                             </div>
                         </div>
 
@@ -135,12 +139,14 @@
                 </div>
             </#if>
 
-            <div class="toast position-fixed bottom-0 end-0 m-5 p-1 align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast position-fixed bottom-0 end-0 m-5 p-1 align-items-center text-white bg-success border-0"
+                 role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body">
                         Account has been created.
                     </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
                 </div>
             </div>
 
