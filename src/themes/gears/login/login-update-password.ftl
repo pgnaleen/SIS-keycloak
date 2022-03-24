@@ -1,14 +1,20 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('password','password-confirm'); section>
     <#if section = "header">
-        ${msg("updatePasswordTitle")}
+        <div class="text-4xl py-2 font-medium">
+            ${msg("updatePasswordTitle")}
+        <div
     <#elseif section = "form">
         <div class="row">
             <div class="col-12">
                 ${msg("resetPasswordInstruction")}
             </div>
         </div>
-        <form id="kc-passwd-update-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
+        <form id="kc-passwd-update-form"
+              class="g-3 needs-validation ${properties.kcFormClass!}"
+              action="${url.loginAction}"
+              method="post"
+              novalidate>
             <input type="text" id="username" name="username" value="${username}" autocomplete="username"
                    readonly="readonly" style="display:none;"/>
             <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
@@ -18,19 +24,22 @@
                     <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <div class="input-group" id="show_hide_password">
-                        <input type="password"
-                               id="password-new"
-                               name="password-new"
-                               class="mandatory-field ${properties.kcInputClass!}"
-                               autofocus
-                               autocomplete="new-password"
-                               onblur="passwordValidation(document.getElementById('password-new'), 'passwordError')"
-                               aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                        />
-                        <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    <#--                    <div class="input-group" id="show_hide_password">-->
+                    <input type="password"
+                           id="password-new"
+                           name="password-new"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           autocomplete="new-password"
+                           onblur="passwordValidation(document.getElementById('password-new'), 'passwordError')"
+                           aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
+                    />
+                    <a id="show_hide_password_new" class="eye-icon" href=""><i class="fa fa-eye-slash"
+                                                                               aria-hidden="true"></i></a>
+                    <div class="invalid-feedback">
+                        Username or Email address is required.
                     </div>
                     <label id="passwordError" class="error-msg"/>
+                    <#--                    </div>-->
                     <#if messagesPerField.existsError('password')>
                         <span id="input-error-password" class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
@@ -45,20 +54,25 @@
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <div class="input-group" id="show_hide_confirm_password">
-                        <input type="password"
-                               id="password-confirm"
-                               name="password-confirm"
-                               class="mandatory-field ${properties.kcInputClass!}"
-                               autocomplete="new-password"
-                               onblur="confirmPasswordMatch('password-new','password-confirm', 'passwordConfirmError')"
-                               aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                        />
-                        <a class="eye-icon" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    <#--                    <div class="input-group" id="show_hide_confirm_password">-->
+                    <input type="password"
+                           id="password-confirm"
+                           name="password-confirm"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           autocomplete="new-password"
+                           onblur="confirmPasswordMatch('password-new','password-confirm', 'passwordConfirmError')"
+                           aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
+                    />
+                    <a id="show_hide_confirm_password" class="eye-icon" href=""><i class="fa fa-eye-slash"
+                                                                                   aria-hidden="true"></i></a>
+                    <div class="invalid-feedback">
+                        Confirm Password is required.
                     </div>
                     <label id="passwordConfirmError" class="error-msg"/>
+                    <#--                    </div>-->
                     <#if messagesPerField.existsError('password-confirm')>
-                        <span id="input-error-password-confirm" class="error-msg ${properties.kcInputErrorMessageClass!}"
+                        <span id="input-error-password-confirm"
+                              class="error-msg ${properties.kcInputErrorMessageClass!}"
                               aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>

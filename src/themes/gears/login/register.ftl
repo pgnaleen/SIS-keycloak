@@ -1,7 +1,9 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('firstName','lastName','email','username','password','password-confirm'); section>
     <#if section = "header">
-        ${msg("registerTitle")}
+        <div class="text-4xl py-2 font-medium">
+            ${msg("registerTitle")}
+        <div
     <#elseif section = "form">
         <div class="row my-2 ${properties.kcFormGroupClass!}">
             <div id="kc-form-options" class="col-12 ${properties.kcFormOptionsClass!}">

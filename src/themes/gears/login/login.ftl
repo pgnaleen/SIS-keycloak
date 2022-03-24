@@ -1,7 +1,9 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
     <#if section = "header">
-        ${msg("loginAccountTitle")}
+        <div class="text-4xl py-2 font-medium">
+            ${msg("loginAccountTitle")}
+        </div>
     <#elseif section = "form">
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
             <div id="kc-registration-container">

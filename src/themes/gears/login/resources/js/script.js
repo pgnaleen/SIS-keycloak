@@ -117,7 +117,7 @@ function validatePhoneNumber(inputElement, errorLabel) {
         return false;
     } else if (!inputElement.value.match(regExp)) {
         // if (!document.getElementsByClassName('was-validated')[0]) {// no need to check bootstrap validation as bootstrap error go away when data is there
-        document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+            document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
         // }
 
         inputElement.style.border = "thin solid #dc2626";
@@ -135,7 +135,7 @@ function passwordValidation(inputElement, errorLabel) {
 
     if (inputElement.value != '' && !inputElement.value.match(regex)) {
         // if (!document.getElementsByClassName('was-validated')[0]) {
-        document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+            document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
         // }
 
         inputElement.style.border = "thin solid #dc2626";
@@ -232,6 +232,21 @@ window.addEventListener('load', function () {
         });
     });
 
+    // reset password first new password
+    $(document).ready(function() {
+        $("#show_hide_password_new").on('click', function(event) {
+            event.preventDefault();
+            if($('#password-new').attr("type") == "text"){
+                $('#password-new').attr('type', 'password');
+                $('#show_hide_password_new svg').addClass( "fa-eye-slash" );
+                $('#show_hide_password_new svg').removeClass( "fa-eye" );
+            }else if($('#password-new').attr("type") == "password"){
+                $('#password-new').attr('type', 'text');
+                $('#show_hide_password_new svg').removeClass( "fa-eye-slash" );
+                $('#show_hide_password_new svg').addClass( "fa-eye" );
+            }
+        });
+    });
 
     // this is for template general ftl. if error message is for invalid password then display password error instead this message
     $(document).ready(function () {
@@ -305,6 +320,7 @@ window.addEventListener('load', function () {
                         }
                     }
 
+                    // this was-validated class will be added to the form class list
                     form.classList.add('was-validated');
                 }, false)
             })
