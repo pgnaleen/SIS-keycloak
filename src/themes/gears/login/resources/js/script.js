@@ -97,7 +97,7 @@ function userEmailValidation(inputId, errorLabelId) {
 
         document.getElementById(inputId).style.border = "thin solid #dc2626";
     } else {
-        document.getElementById(errorLabelId).innerHTML="";
+        document.getElementById(errorLabelId).innerHTML = "";
         document.getElementById(inputId).style.border = "";
     }
 }
@@ -117,7 +117,7 @@ function validatePhoneNumber(inputElement, errorLabel) {
         return false;
     } else if (!inputElement.value.match(regExp)) {
         // if (!document.getElementsByClassName('was-validated')[0]) {// no need to check bootstrap validation as bootstrap error go away when data is there
-            document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
+        document.getElementById(errorLabel).innerHTML = "Invalid Phone number. Please enter a valid Phone number";
         // }
 
         inputElement.style.border = "thin solid #dc2626";
@@ -135,7 +135,7 @@ function passwordValidation(inputElement, errorLabel) {
 
     if (inputElement.value != '' && !inputElement.value.match(regex)) {
         // if (!document.getElementsByClassName('was-validated')[0]) {
-            document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
+        document.getElementById(errorLabel).innerHTML = "Password must be at least 8 characters, 1 number, 1 lower case, 1 upper case and 1 special character";
         // }
 
         inputElement.style.border = "thin solid #dc2626";
@@ -160,7 +160,7 @@ function passwordValidation(inputElement, errorLabel) {
 
 function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabel) {
     if (!(document.getElementById(passwordElement).value ===
-        document.getElementById(passwordConfirmElement).value)){
+        document.getElementById(passwordConfirmElement).value)) {
 
         document.getElementById(errorLabel).innerHTML = "The password confirmation does not match.";
         document.getElementById(passwordConfirmElement).style.border = "thin solid #dc2626";
@@ -198,52 +198,100 @@ function isRequired(inputElement, errorLabel, errorMsg) {
 }
 
 
+function createFullName() {
+
+    let fullName = '';
+    if (document.getElementById('user.attributes.firstName').value &&
+        document.getElementById('user.attributes.firstName').value !== '') {
+        fullName = document.getElementById('user.attributes.firstName').value + ' ';
+    }
+    if (document.getElementById('user.attributes.middleName').value &&
+        document.getElementById('user.attributes.middleName').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.middleName').value + ' ';
+    }
+    if (document.getElementById('user.attributes.thirdName').value &&
+        document.getElementById('user.attributes.thirdName').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.thirdName').value + ' ';
+    }
+    if (document.getElementById('user.attributes.familyName').value &&
+        document.getElementById('user.attributes.familyName').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.familyName').value;
+    }
+
+    document.getElementById('user.attributes.fullName').value = fullName;
+}
+
+
+function createFullName2L() {
+
+    let fullName = '';
+    if (document.getElementById('user.attributes.firstName2L').value &&
+        document.getElementById('user.attributes.firstName2L').value !== '') {
+        fullName = document.getElementById('user.attributes.firstName2L').value + ' ';
+    }
+    if (document.getElementById('user.attributes.middleName2L').value &&
+        document.getElementById('user.attributes.middleName2L').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.middleName2L').value + ' ';
+    }
+    if (document.getElementById('user.attributes.thirdName2L').value &&
+        document.getElementById('user.attributes.thirdName2L').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.thirdName2L').value + ' ';
+    }
+    if (document.getElementById('user.attributes.familyName2L').value &&
+        document.getElementById('user.attributes.familyName2L').value !== '') {
+        fullName = fullName + document.getElementById('user.attributes.familyName2L').value;
+    }
+
+    document.getElementById('user.attributes.fullName2L').value = fullName;
+}
+
+
 // Because we want to access DOM nodes,
 // we initialize our script at page load.
 window.addEventListener('load', function () {
 
-    $(document).ready(function() {
-        $("#show_hide_password").on('click', function(event) {
+    $(document).ready(function () {
+        $("#show_hide_password").on('click', function (event) {
             event.preventDefault();
-            if($('#password').attr("type") == "text"){
+            if ($('#password').attr("type") == "text") {
                 $('#password').attr('type', 'password');
-                $('#show_hide_password svg').addClass( "fa-eye-slash" );
-                $('#show_hide_password svg').removeClass( "fa-eye" );
-            }else if($('#password').attr("type") == "password"){
+                $('#show_hide_password svg').addClass("fa-eye-slash");
+                $('#show_hide_password svg').removeClass("fa-eye");
+            } else if ($('#password').attr("type") == "password") {
                 $('#password').attr('type', 'text');
-                $('#show_hide_password svg').removeClass( "fa-eye-slash" );
-                $('#show_hide_password svg').addClass( "fa-eye" );
+                $('#show_hide_password svg').removeClass("fa-eye-slash");
+                $('#show_hide_password svg').addClass("fa-eye");
             }
         });
     });
 
-    $(document).ready(function() {
-        $("#show_hide_confirm_password").on('click', function(event) {
+    $(document).ready(function () {
+        $("#show_hide_confirm_password").on('click', function (event) {
             event.preventDefault();
-            if($('#password-confirm').attr("type") == "text"){
+            if ($('#password-confirm').attr("type") == "text") {
                 $('#password-confirm').attr('type', 'password');
-                $('#show_hide_confirm_password svg').addClass( "fa-eye-slash" );
-                $('#show_hide_confirm_password svg').removeClass( "fa-eye" );
-            }else if($('#password-confirm').attr("type") == "password"){
+                $('#show_hide_confirm_password svg').addClass("fa-eye-slash");
+                $('#show_hide_confirm_password svg').removeClass("fa-eye");
+            } else if ($('#password-confirm').attr("type") == "password") {
                 $('#password-confirm').attr('type', 'text');
-                $('#show_hide_confirm_password svg').removeClass( "fa-eye-slash" );
-                $('#show_hide_confirm_password svg').addClass( "fa-eye" );
+                $('#show_hide_confirm_password svg').removeClass("fa-eye-slash");
+                $('#show_hide_confirm_password svg').addClass("fa-eye");
             }
         });
     });
 
     // reset password first new password
-    $(document).ready(function() {
-        $("#show_hide_password_new").on('click', function(event) {
+    $(document).ready(function () {
+        $("#show_hide_password_new").on('click', function (event) {
             event.preventDefault();
-            if($('#password-new').attr("type") == "text"){
+            if ($('#password-new').attr("type") == "text") {
                 $('#password-new').attr('type', 'password');
-                $('#show_hide_password_new svg').addClass( "fa-eye-slash" );
-                $('#show_hide_password_new svg').removeClass( "fa-eye" );
-            }else if($('#password-new').attr("type") == "password"){
+                $('#show_hide_password_new svg').addClass("fa-eye-slash");
+                $('#show_hide_password_new svg').removeClass("fa-eye");
+            } else if ($('#password-new').attr("type") == "password") {
                 $('#password-new').attr('type', 'text');
-                $('#show_hide_password_new svg').removeClass( "fa-eye-slash" );
-                $('#show_hide_password_new svg').addClass( "fa-eye" );
+                $('#show_hide_password_new svg').removeClass("fa-eye-slash");
+                $('#show_hide_password_new svg').addClass("fa-eye");
             }
         });
     });
@@ -287,12 +335,16 @@ window.addEventListener('load', function () {
                             document.getElementById('kc-login').disabled = false;
                         }
 
-                        if (document.getElementById('fullNameError')) {
-                            document.getElementById('fullNameError').innerHTML = '';
+                        if (document.getElementById('firstNameError')) {
+                            document.getElementById('firstNameError').innerHTML = '';
                         }
 
                         if (document.getElementById('registerDatePicker')) {
                             document.getElementById('registerDatePicker').innerHTML = 'Date of Birth is required.';
+                        }
+
+                        if (document.getElementById('contactNumberError')) {
+                            document.getElementById('contactNumberError').innerHTML = '';
                         }
 
                         if (document.getElementById('emailError')) {
@@ -318,6 +370,11 @@ window.addEventListener('load', function () {
                         if (document.getElementById('lblErrorParentEmail')) {
                             document.getElementById('lblErrorParentEmail').innerHTML = '';
                         }
+
+                        if (document.getElementById('parentNameError')) {
+                            document.getElementById('parentNameError').innerHTML = '';
+                        }
+
                     }
 
                     // this was-validated class will be added to the form class list
@@ -332,7 +389,7 @@ window.addEventListener('load', function () {
         document.getElementById('kc-registration-container')) {
         $('.toast').toast('show');
         // need to hide this register link as if user clicked on register link login page will be malfunctioned.
-        document.getElementById('kc-registration-container').style.visibility="hidden";
+        document.getElementById('kc-registration-container').style.visibility = "hidden";
     }
 
 
@@ -366,9 +423,9 @@ window.addEventListener('load', function () {
     var religionSelect = document.getElementById('user.attributes.religion');
 
     fetch(this.adminServiceUrl + "/api/v1/common-lookup/TITLE")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let title in j.payload) {
                         let {id, name} = j.payload[title];
@@ -377,9 +434,9 @@ window.addEventListener('load', function () {
                 }
             ));
     fetch(this.adminServiceUrl + "/api/v1/common-lookup/GENDER")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let gender in j.payload) {
                         let {id, name} = j.payload[gender];
@@ -388,9 +445,9 @@ window.addEventListener('load', function () {
                 }
             ));
     fetch(this.adminServiceUrl + "/api/v1/common-lookup/NATIONALITY")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let nationality in j.payload) {
                         let {id, name} = j.payload[nationality];
@@ -399,9 +456,9 @@ window.addEventListener('load', function () {
                 }
             ));
     fetch(this.adminServiceUrl + "/api/v1/countries")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let country in j.payload) {
                         let {id, name} = j.payload[country];
@@ -410,9 +467,9 @@ window.addEventListener('load', function () {
                 }
             ));
     fetch(this.adminServiceUrl + "/api/v1/common-lookup/MARITAL_STATUS")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let maritalStatus in j.payload) {
                         let {id, name} = j.payload[maritalStatus];
@@ -421,9 +478,9 @@ window.addEventListener('load', function () {
                 }
             ));
     fetch(this.adminServiceUrl + "/api/v1/common-lookup/RELIGION")
-        .then(r=> r.json()
+        .then(r => r.json()
             .then(
-                j=> {
+                j => {
                     console.log('\nREQUEST 2', j);
                     for (let religion in j.payload) {
                         let {id, name} = j.payload[religion];
@@ -485,9 +542,19 @@ window.addEventListener('load', function () {
 
         formData.append("titleId", document.getElementById("user.attributes.nameTitle").value);
         formData.append("genderId", document.getElementById("user.attributes.gender").value);
+        formData.append("firstName", document.getElementById("user.attributes.firstName").value);
+        formData.append("middleName", document.getElementById("user.attributes.middleName").value);
+        formData.append("thirdName", document.getElementById("user.attributes.thirdName").value);
+        formData.append("familyName", document.getElementById("user.attributes.familyName").value);
         formData.append("fullName", document.getElementById("user.attributes.fullName").value);
+        formData.append("firstName2L", document.getElementById("user.attributes.firstName2L").value);
+        formData.append("middleName2L", document.getElementById("user.attributes.middleName2L").value);
+        formData.append("thirdName2L", document.getElementById("user.attributes.thirdName2L").value);
+        formData.append("familyName2L", document.getElementById("user.attributes.familyName2L").value);
+        formData.append("fullName2L", document.getElementById("user.attributes.fullName2L").value);
         formData.append("dob", document.getElementById("user.attributes.dob").value);
         formData.append("nationalityId", document.getElementById("user.attributes.nationality").value);
+        formData.append("contactNumber", document.getElementById("user.attributes.contactNumber").value);
         formData.append("address", document.getElementById("user.attributes.address").value);
         formData.append("countryId", document.getElementById("user.attributes.country").value);
         formData.append("email", document.getElementById("email").value);
@@ -495,10 +562,13 @@ window.addEventListener('load', function () {
         formData.append("password", document.getElementById("password").value);
         formData.append("maritalStatusId", document.getElementById("user.attributes.maritalStatus").value);
         formData.append("religionId", document.getElementById("user.attributes.religion").value);
+        formData.append("parentName", document.getElementById("user.attributes.parentName").value);
         formData.append("parentPhone", document.getElementById("user.attributes.parentPhone").value);
         formData.append("parentMobile", document.getElementById("user.attributes.parentMobile").value);
         formData.append("parentEmail", document.getElementById("user.attributes.parentEmail").value);
         formData.append("realm", this.realm);
+        const date = new Date();
+        formData.append("registeredDate", date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());
         formData.append("activeStatus", true);
 
         var blob = new Blob([file.binary], {type: "text/jpeg"});
@@ -552,7 +622,6 @@ window.addEventListener('load', function () {
                 alert("This browser does not support HTML5 FileReader.");
             }
         });
-
 
 
     // image size, width and height

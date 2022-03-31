@@ -56,35 +56,168 @@
                 </div>
 
             </div>
+
+
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.firstName"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           name="user.attributes.firstName"
+                           autocomplete="user.attributes.firstName"
+                           maxlength="30"
+                           onchange="createFullName()"
+                           onblur="isRequired(document.getElementById('user.attributes.firstName'),
+                                           'firstNameError', 'First name is required.')"
+                           aria-invalid="<#if messagesPerField.existsError('firstName')>true</#if>"
+                           required/>
+                    <#--                    this bootstrap error message should be at right next to input element-->
+                    <div class="invalid-feedback">
+                        First Name is required.
+                    </div>
+                    <label id="firstNameError" class="error-msg"/>
+
+                    <#if messagesPerField.existsError('firstName')>
+                        <span id="input-error-fullname" class="error-msg ${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
+                    </span>
+                    </#if>
+                </div>
+            </div>
+
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.middleName" class="${properties.kcLabelClass!}">${msg("middleName")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.middleName"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.middleName"
+                           autocomplete="user.attributes.middleName"
+                           maxlength="30"
+                           onchange="createFullName()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.thirdName" class="${properties.kcLabelClass!}">${msg("thirdName")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.thirdName"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.thirdName"
+                           autocomplete="user.attributes.thirdName"
+                           maxlength="30"
+                           onchange="createFullName()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.familyName" class="${properties.kcLabelClass!}">${msg("familyName")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.familyName"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.familyName"
+                           autocomplete="user.attributes.familyName"
+                           maxlength="30"
+                           onchange="createFullName()"/>
+                </div>
+            </div>
+
+
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
                     <label for="user.attributes.fullName" class="${properties.kcLabelClass!}">${msg("fullName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.fullName"
-                           class="mandatory-field ${properties.kcInputClass!}"
+                           class="${properties.kcInputClass!}"
                            name="user.attributes.fullName"
-                           value="${(register.formData.lastName!'')}"
                            autocomplete="user.attributes.fullName"
-                           maxlength="100"
-                           onblur="isRequired(document.getElementById('user.attributes.fullName'),
-                                           'fullNameError', 'Full name is required.')"
-                           aria-invalid="<#if messagesPerField.existsError('fullName')>true</#if>"
-                           required/>
-                    <#--                    this bootstrap error message should be at right next to input element-->
-                    <div class="invalid-feedback">
-                        Full Name is required.
-                    </div>
-                    <label id="fullNameError" class="error-msg"/>
-
-                    <#if messagesPerField.existsError('fullName')>
-                        <span id="input-error-fullname" class="error-msg ${properties.kcInputErrorMessageClass!}"
-                              aria-live="polite">
-                        ${kcSanitize(messagesPerField.get('fullName'))?no_esc}
-                    </span>
-                    </#if>
+                           maxlength="100"/>
                 </div>
             </div>
+
+
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.firstName2L" class="${properties.kcLabelClass!}">${msg("firstName2L")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.firstName2L"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.firstName2L"
+                           autocomplete="user.attributes.firstName2L"
+                           maxlength="30"
+                           onchange="createFullName2L()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.middleName2L" class="${properties.kcLabelClass!}">${msg("middleName2L")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.middleName2L"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.middleName2L"
+                           autocomplete="user.attributes.middleName2L"
+                           maxlength="30"
+                           onchange="createFullName2L()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.thirdName2L" class="${properties.kcLabelClass!}">${msg("thirdName2L")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.thirdName2L"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.thirdName2L"
+                           autocomplete="user.attributes.thirdName2L"
+                           maxlength="30"
+                           onchange="createFullName2L()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.familyName2L" class="${properties.kcLabelClass!}">${msg("familyName2L")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.familyName2L"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.familyName2L"
+                           autocomplete="user.attributes.familyName2L"
+                           maxlength="30"
+                           onchange="createFullName2L()"/>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.fullName2L" class="${properties.kcLabelClass!}">${msg("fullName2L")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.fullName2L"
+                           class="${properties.kcInputClass!}"
+                           name="user.attributes.fullName2L"
+                           autocomplete="user.attributes.fullName2L"
+                           maxlength="100"/>
+                </div>
+            </div>
+
+
 
             <div class="row my-2">
                 <div class="col-6 form-group">
@@ -140,6 +273,36 @@
                     </span>
                         </#if>
                     </div>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.contactNumber"
+                           class="${properties.kcLabelClass!}">${msg("contactNumber")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text"
+                           id="user.attributes.contactNumber"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           name="user.attributes.contactNumber"
+                           maxlength="20"
+                           value="${(register.formData['user.attributes.contactNumber']!'')}"
+                           onblur="validatePhoneNumber(document.getElementById('user.attributes.contactNumber'),
+                                                            'contactNumberError')"
+                           aria-invalid="<#if messagesPerField.existsError('contactNumber')>true</#if>"
+                           required/>
+                    <div class="invalid-feedback">
+                        Contact Number is required.
+                    </div>
+                    <label id="contactNumberError" class="error-msg"/>
+
+                    <#if messagesPerField.existsError('contactNumber')>
+                        <span id="input-error-contact-number" class="${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('contactNumber'))?no_esc}
+                    </span>
+                    </#if>
                 </div>
             </div>
 
@@ -357,6 +520,34 @@
                     </span>
                         </#if>
                     </div>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-12 ${properties.kcLabelWrapperClass!}">
+                    <label for="user.attributes.parentName" class="${properties.kcLabelClass!}">${msg("parentName")}</label>
+                </div>
+                <div class="col-12 ${properties.kcInputWrapperClass!}">
+                    <input type="text" id="user.attributes.parentName"
+                           class="mandatory-field ${properties.kcInputClass!}"
+                           name="user.attributes.parentName"
+                           autocomplete="user.attributes.parentName"
+                           maxlength="100"
+                           onblur="isRequired(document.getElementById('user.attributes.parentName'),
+                                           'parentNameError', 'Parent Name is required.')"
+                           required/>
+                    <#--                    this bootstrap error message should be at right next to input element-->
+                    <div class="invalid-feedback">
+                        Parent Name is required.
+                    </div>
+                    <label id="parentNameError" class="error-msg"/>
+
+                    <#if messagesPerField.existsError('parentName')>
+                        <span id="input-error-parentname" class="error-msg ${properties.kcInputErrorMessageClass!}"
+                              aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('parentName'))?no_esc}
+                    </span>
+                    </#if>
                 </div>
             </div>
 
