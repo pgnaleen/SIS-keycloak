@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col col-md-6 col-sm-12 bg-login d-none d-md-block d-lg-block d-xl-block d-xxl-block p-5">
             <div class="p-5 text-white">
-                <h1 class="pb-5">Welcome to <br/>GEARS SIS</h1>
+                <h1 class="pb-5 text-6xl">Welcome to <br/>GEARS SIS</h1>
                 <p class="pb-5">Our industry-built ERP system is designed for enterprise level architecture for medium and large Companies focused on connecting customers, suppliers, machines and various areas of business operations with the power to support your growth ambitions.</p>
                 <p class="">
                     <img src="${url.resourcesPath}/img/cus-logo-1.png" class="img-company">

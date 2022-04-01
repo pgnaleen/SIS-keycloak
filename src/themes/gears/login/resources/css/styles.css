@@ -63,7 +63,7 @@ input:focus-visible {
 
 a {
     color: #0055a9;
-    text-decoration: none;
+    text-decoration: underline !important;
 }
 
 a:hover {
