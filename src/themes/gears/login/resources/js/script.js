@@ -375,6 +375,13 @@ window.addEventListener('load', function () {
                             document.getElementById('parentNameError').innerHTML = '';
                         }
 
+                        // add border line when click submit and no data in the field
+                        Array.prototype.forEach.call(document.getElementsByClassName('mandatory-field'), function(el) {
+                            if (el.value === '') {
+                                el.style.border = "thin solid #dc2626";
+                            }
+                        });
+
                     }
 
                     // this was-validated class will be added to the form class list
