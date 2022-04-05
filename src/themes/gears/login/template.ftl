@@ -90,7 +90,8 @@
                                 </div>
                             </div>
                         <#else>
-                            <h3 id="kc-page-title"><#nested "header"></h3>
+<#--                            comment this otherwise duplicate messages will show up-->
+<#--                            <h3 id="kc-page-title"><#nested "header"></h3>-->
                         </#if>
                     <#else>
                         <#if displayRequiredFields>
