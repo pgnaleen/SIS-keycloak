@@ -674,8 +674,8 @@
                 </div>
                 <div class="col-11 px-0">
                     <span>I agree to the <a
-                                href="${properties.frontEnd!}/#/public/terms-conditions">Terms and condition</a> and <a
-                                href="${properties.frontEnd!}/#/public/privacy-policy">Privacy policy</a>.</span>
+                                href="${properties.frontEnd!}/#/public/terms-conditions" target="_blank">Terms and condition</a> and <a
+                                href="${properties.frontEnd!}/#/public/privacy-policy" target="_blank">Privacy policy</a>.</span>
                 </div>
             </div>
 
