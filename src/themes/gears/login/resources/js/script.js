@@ -130,6 +130,22 @@ function validatePhoneNumber(inputElement, errorLabel) {
 }
 
 
+function usernameValidation(inputElement, errorLabel) {
+    if (inputElement.value === '') {
+        if (!document.getElementsByClassName('was-validated')[0]) {
+            document.getElementById(errorLabel).innerHTML = "Username is required";
+        }
+
+        inputElement.style.border = "thin solid #dc2626";
+        return false;
+    } else {
+        inputElement.value = inputElement.value.toLowerCase();
+    }
+
+    return false;
+}
+
+
 function passwordValidation(inputElement, errorLabel) {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
 

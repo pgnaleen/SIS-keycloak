@@ -389,8 +389,7 @@
                                value="${(register.formData.username!'')}"
                                autocomplete="username"
                                maxlength="30"
-                               onblur="isRequired(document.getElementById('username'),
-                                           'usernameError', 'Username is required.')"
+                               onblur="usernameValidation(document.getElementById('username'), 'usernameError')"
                                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
                                required/>
                         <div class="invalid-feedback">
