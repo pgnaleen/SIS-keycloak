@@ -178,7 +178,7 @@ function confirmPasswordMatch(passwordElement, passwordConfirmElement, errorLabe
     if (!(document.getElementById(passwordElement).value ===
         document.getElementById(passwordConfirmElement).value)) {
 
-        document.getElementById(errorLabel).innerHTML = "The password confirmation does not match.";
+        document.getElementById(errorLabel).innerHTML = "The password confirmation does not match";
         document.getElementById(passwordConfirmElement).style.border = "thin solid #dc2626";
 
         return false;

@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.firstName2L"
-                           class="${properties.kcInputClass!}"
+                           class="text-rtl ${properties.kcInputClass!}"
                            name="user.attributes.firstName2L"
                            autocomplete="user.attributes.firstName2L"
                            maxlength="30"
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.middleName2L"
-                           class="${properties.kcInputClass!}"
+                           class="text-rtl ${properties.kcInputClass!}"
                            name="user.attributes.middleName2L"
                            autocomplete="user.attributes.middleName2L"
                            maxlength="30"
@@ -182,7 +182,7 @@
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.thirdName2L"
-                           class="${properties.kcInputClass!}"
+                           class="text-rtl ${properties.kcInputClass!}"
                            name="user.attributes.thirdName2L"
                            autocomplete="user.attributes.thirdName2L"
                            maxlength="30"
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.familyName2L"
-                           class="${properties.kcInputClass!}"
+                           class="text-rtl ${properties.kcInputClass!}"
                            name="user.attributes.familyName2L"
                            autocomplete="user.attributes.familyName2L"
                            maxlength="30"
@@ -210,7 +210,7 @@
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.fullName2L"
-                           class="${properties.kcInputClass!}"
+                           class="text-rtl ${properties.kcInputClass!}"
                            name="user.attributes.fullName2L"
                            autocomplete="user.attributes.fullName2L"
                            maxlength="100"/>

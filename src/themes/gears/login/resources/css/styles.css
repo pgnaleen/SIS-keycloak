@@ -260,3 +260,8 @@ a:hover {
     /*width: 100%;*/
     /*flex-direction: row;*/
 }
+
+.text-rtl {
+    direction: rtl !important;
+    text-align: start !important;
+}
