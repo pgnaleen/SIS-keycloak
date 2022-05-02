@@ -592,7 +592,7 @@ window.addEventListener('load', function () {
         formData.append("realm", this.realm);
         const date = new Date();
         formData.append("registeredDate", date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());
-        formData.append("activeStatus", true);
+        formData.append("activeStatus", false);
 
         var blob = new Blob([file.binary], {type: "text/jpeg"});
         formData.append("userPhoto", blob);
