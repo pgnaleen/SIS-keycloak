@@ -66,9 +66,6 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
                 RealmModel realm = session.realms().getRealm(event.getRealmId());
 
                 UserModel user = session.users().getUserById(realm, event.getUserId());
-                boolean isTempDisabled = session.getProvider(BruteForceProtector.class).isPermanentlyLockedOut(
-                        session, realm, user);
-                logger.info(isTempDisabled);
 
                 UserLoginFailureModel userLoginFailure = getUserModel(session, event);
                 if ( userLoginFailure != null && (userLoginFailure.getNumFailures() == 2) ) {
