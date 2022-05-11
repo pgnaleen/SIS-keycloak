@@ -63,6 +63,7 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
             Path currentRelativePath = Paths.get("");
             String s = currentRelativePath.toAbsolutePath().toString();
             System.out.println("Current absolute path is: " + s);
+            logger.info("Current absolute path is: " + s);
             logger.info("[adminServiceUrl]:" + adminApiServer);
 
             if (event.getError().equals("invalid_user_credentials") ||
