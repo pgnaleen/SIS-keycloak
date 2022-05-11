@@ -4,7 +4,6 @@
 package com.ubs;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -17,14 +16,11 @@ import org.keycloak.events.EventListenerProvider;
 import org.keycloak.events.EventType;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.*;
-import org.keycloak.services.managers.BruteForceProtector;
 import org.keycloak.theme.FreeMarkerUtil;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +32,8 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
     private static final Logger logger = Logger.getLogger(AccountLockNotificationEventListenerProvider.class);
     private final KeycloakSession session;
     private final RealmProvider model;
-    private final String fileName = "themes/gears/login/theme.properties";
+//    private final String fileName = "themes/gears/login/theme.properties";
+    private final String fileName = "/opt/jboss/keycloak/themes/gears/login/theme.properties";
     private final String adminApiServer;
 
     public AccountLockNotificationEventListenerProvider(KeycloakSession session) {
@@ -60,10 +57,6 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
     public void onEvent(Event event) {
         if (EventType.LOGIN_ERROR.equals(event.getType())) {
             logger.info("logging event");
-            Path currentRelativePath = Paths.get("");
-            String s = currentRelativePath.toAbsolutePath().toString();
-            System.out.println("Current absolute path is: " + s);
-            logger.info("Current absolute path is: " + s);
             logger.info("[adminServiceUrl]:" + adminApiServer);
 
             if (event.getError().equals("invalid_user_credentials") ||
