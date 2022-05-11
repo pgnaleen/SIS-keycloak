@@ -23,6 +23,8 @@ import org.keycloak.theme.FreeMarkerUtil;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +60,9 @@ public class AccountLockNotificationEventListenerProvider implements EventListen
     public void onEvent(Event event) {
         if (EventType.LOGIN_ERROR.equals(event.getType())) {
             logger.info("logging event");
+            Path currentRelativePath = Paths.get("");
+            String s = currentRelativePath.toAbsolutePath().toString();
+            System.out.println("Current absolute path is: " + s);
             logger.info("[adminServiceUrl]:" + adminApiServer);
 
             if (event.getError().equals("invalid_user_credentials") ||
