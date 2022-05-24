@@ -2,7 +2,7 @@
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('firstName','lastName','email','username','password','password-confirm'); section>
     <#if section = "header">
         <div class="text-4xl py-2 font-medium">
-            ${msg("registerTitle")}
+        ${msg("registerTitle")}
         <div
     <#elseif section = "form">
         <div class="row my-2 ${properties.kcFormGroupClass!}">
@@ -58,10 +58,10 @@
             </div>
 
 
-
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
+                    <label for="user.attributes.firstName"
+                           class="${properties.kcLabelClass!}">${msg("firstName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.firstName"
@@ -92,7 +92,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.middleName" class="${properties.kcLabelClass!}">${msg("middleName")}</label>
+                    <label for="user.attributes.middleName"
+                           class="${properties.kcLabelClass!}">${msg("middleName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.middleName"
@@ -106,7 +107,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.thirdName" class="${properties.kcLabelClass!}">${msg("thirdName")}</label>
+                    <label for="user.attributes.thirdName"
+                           class="${properties.kcLabelClass!}">${msg("thirdName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.thirdName"
@@ -120,7 +122,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.familyName" class="${properties.kcLabelClass!}">${msg("familyName")}</label>
+                    <label for="user.attributes.familyName"
+                           class="${properties.kcLabelClass!}">${msg("familyName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.familyName"
@@ -147,10 +150,10 @@
             </div>
 
 
-
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.firstName2L" class="${properties.kcLabelClass!}">${msg("firstName2L")}</label>
+                    <label for="user.attributes.firstName2L"
+                           class="${properties.kcLabelClass!}">${msg("firstName2L")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.firstName2L"
@@ -164,7 +167,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.middleName2L" class="${properties.kcLabelClass!}">${msg("middleName2L")}</label>
+                    <label for="user.attributes.middleName2L"
+                           class="${properties.kcLabelClass!}">${msg("middleName2L")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.middleName2L"
@@ -178,7 +182,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.thirdName2L" class="${properties.kcLabelClass!}">${msg("thirdName2L")}</label>
+                    <label for="user.attributes.thirdName2L"
+                           class="${properties.kcLabelClass!}">${msg("thirdName2L")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.thirdName2L"
@@ -192,7 +197,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.familyName2L" class="${properties.kcLabelClass!}">${msg("familyName2L")}</label>
+                    <label for="user.attributes.familyName2L"
+                           class="${properties.kcLabelClass!}">${msg("familyName2L")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.familyName2L"
@@ -206,7 +212,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.fullName2L" class="${properties.kcLabelClass!}">${msg("fullName2L")}</label>
+                    <label for="user.attributes.fullName2L"
+                           class="${properties.kcLabelClass!}">${msg("fullName2L")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.fullName2L"
@@ -216,7 +223,6 @@
                            maxlength="100"/>
                 </div>
             </div>
-
 
 
             <div class="row my-2">
@@ -524,7 +530,8 @@
 
             <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.parentName" class="${properties.kcLabelClass!}">${msg("parentName")}</label>
+                    <label for="user.attributes.parentName"
+                           class="${properties.kcLabelClass!}">${msg("parentName")}</label>
                 </div>
                 <div class="col-12 ${properties.kcInputWrapperClass!}">
                     <input type="text" id="user.attributes.parentName"
@@ -605,36 +612,115 @@
                     </div>
                 </div>
             </div>
+
             <div class="row my-2 ${properties.kcFormGroupClass!}">
-                <div class="col-12 ${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.parentEmail"
-                           class="${properties.kcLabelClass!}">${msg("parentEmail")}</label>
-                </div>
-                <div class="col-12 ${properties.kcInputWrapperClass!}">
-                    <input type="email"
-                           id="user.attributes.parentEmail"
-                           class="mandatory-field ${properties.kcInputClass!}"
-                           name="user.attributes.parentEmail"
-                           value="${(register.formData['user.attributes.parentEmail']!'')}"
-                           aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
-                           onblur="userEmailValidation('user.attributes.parentEmail', 'lblErrorParentEmail')"
-                           required/>
-                    <div class="invalid-feedback">
-                        Valid Parent Email is required.
+                <div class="col-6 ${properties.kcFormGroupClass!}">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <label for="user.attributes.parentEmail"
+                               class="${properties.kcLabelClass!}">${msg("parentEmail")}</label>
                     </div>
-                    <label id="lblErrorParentEmail" class="error-msg"></label>
-                    <#--                    <input type="text" name="email" id="txtEmail" onblur="validateForm()">-->
-                    <#--                    <label id="lblError" style="color:red"></label>-->
-                    <#if messagesPerField.existsError('parentEmail')>
-                        <span id="input-error-parentEmail" class="${properties.kcInputErrorMessageClass!}"
-                              aria-live="polite">
+                    <div class="${properties.kcInputWrapperClass!}">
+                        <input type="email"
+                               id="user.attributes.parentEmail"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="user.attributes.parentEmail"
+                               value="${(register.formData['user.attributes.parentEmail']!'')}"
+                               aria-invalid="<#if messagesPerField.existsError('parentEmail')>true</#if>"
+                               onblur="userEmailValidation('user.attributes.parentEmail', 'lblErrorParentEmail')"
+                               required/>
+                        <div class="invalid-feedback">
+                            Valid Parent Email is required.
+                        </div>
+                        <label id="lblErrorParentEmail" class="error-msg"></label>
+                        <#if messagesPerField.existsError('parentEmail')>
+                            <span id="input-error-parentEmail" class="${properties.kcInputErrorMessageClass!}"
+                                  aria-live="polite">
                         ${kcSanitize(messagesPerField.get('parentEmail'))?no_esc}
                     </span>
-                    </#if>
+                        </#if>
+                    </div>
+                </div>
+
+                <div class="col-6 ${properties.kcFormGroupClass!}">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <label for="user.attributes.passportNumber"
+                               class="${properties.kcLabelClass!}">${msg("passportNumber")}</label>
+                    </div>
+                    <div class="${properties.kcInputWrapperClass!}">
+                        <input type="text"
+                               id="user.attributes.passportNumber"
+                               class="${properties.kcInputClass!}"
+                               name="user.attributes.passportNumber"
+                               value="${(register.formData['user.attributes.passportNumber']!'')}"
+                               aria-invalid="<#if messagesPerField.existsError('passportNumber')>true</#if>"
+                               required/>
+                        <label id="lblErrorParentEmail" class="error-msg"></label>
+                        <#if messagesPerField.existsError('passportNumber')>
+                            <span id="input-error-passport-number" class="${properties.kcInputErrorMessageClass!}"
+                                  aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('passportNumber'))?no_esc}
+                    </span>
+                        </#if>
+                    </div>
                 </div>
             </div>
 
-            <div class="row my-2">
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
+                <div class="col-6 ${properties.kcFormGroupClass!}">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <label for="user.attributes.civilId"
+                               class="${properties.kcLabelClass!}">${msg("civilId")}</label>
+                    </div>
+                    <div class="${properties.kcInputWrapperClass!}">
+                        <input type="text"
+                               id="user.attributes.civilId"
+                               class="mandatory-field ${properties.kcInputClass!}"
+                               name="user.attributes.civilId"
+                               value="${(register.formData['user.attributes.civilId']!'')}"
+                               aria-invalid="<#if messagesPerField.existsError('civilId')>true</#if>"
+                               onblur="isRequired(document.getElementById('user.attributes.civilId'),
+                                           'lblErrorCivilId', 'Civil ID is required.')"
+                               required/>
+                        <div class="invalid-feedback">
+                            Civil ID is required.
+                        </div>
+                        <label id="lblErrorCivilId" class="error-msg"></label>
+                        <#if messagesPerField.existsError('civilId')>
+                            <span id="input-error-civil-id" class="${properties.kcInputErrorMessageClass!}"
+                                  aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('civilId'))?no_esc}
+                    </span>
+                        </#if>
+                    </div>
+                </div>
+
+
+                <div class="col-6 ${properties.kcFormGroupClass!}">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <label for="user.attributes.gccId"
+                               class="${properties.kcLabelClass!}">${msg("gccId")}</label>
+                    </div>
+                    <div class="${properties.kcInputWrapperClass!}">
+                        <input type="text"
+                               id="user.attributes.gccId"
+                               class="${properties.kcInputClass!}"
+                               name="user.attributes.gccId"
+                               value="${(register.formData['user.attributes.gccId']!'')}"
+                               aria-invalid="<#if messagesPerField.existsError('gccId')>true</#if>"
+                               required/>
+                        <label id="lblErrorGccId" class="error-msg"></label>
+                        <#if messagesPerField.existsError('gccId')>
+                            <span id="input-error-gcc-id" class="${properties.kcInputErrorMessageClass!}"
+                                  aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('gccId'))?no_esc}
+                    </span>
+                        </#if>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2 ${properties.kcFormGroupClass!}">
                 <div class="col-12 ${properties.kcLabelWrapperClass!}">
                     <label for="user.attributes.userPhoto"
                            class="${properties.kcLabelClass!}">${msg("userPhoto")}</label>
@@ -674,7 +760,8 @@
                 <div class="col-11 px-0">
                     <span>I agree to the <a
                                 href="${properties.frontEnd!}/#/public/terms-conditions" target="_blank">Terms and condition</a> and <a
-                                href="${properties.frontEnd!}/#/public/privacy-policy" target="_blank">Privacy policy</a>.</span>
+                                href="${properties.frontEnd!}/#/public/privacy-policy"
+                                target="_blank">Privacy policy</a>.</span>
                 </div>
             </div>
 
@@ -693,6 +780,17 @@
                 </div>
             </div>
         </form>
+        <div id="toast" class="toast position-fixed bottom-0 end-0 m-5 p-1 align-items-center text-white bg-danger border-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <label id="toast-body" class="toast-body">
+                    Passport Number, Civil Id or GCC ID already exist.
+                </label>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+            </div>
+        </div>
+
         <div hidden
              class="col-8 ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('gender',properties.kcFormGroupErrorClass!)}">
             <div class=" ${properties.kcLabelWrapperClass!}">

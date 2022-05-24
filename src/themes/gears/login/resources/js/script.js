@@ -392,7 +392,7 @@ window.addEventListener('load', function () {
                         }
 
                         // add border line when click submit and no data in the field
-                        Array.prototype.forEach.call(document.getElementsByClassName('mandatory-field'), function(el) {
+                        Array.prototype.forEach.call(document.getElementsByClassName('mandatory-field'), function (el) {
                             if (el.value === '') {
                                 el.style.border = "thin solid #dc2626";
                             }
@@ -561,6 +561,13 @@ window.addEventListener('load', function () {
 
     // sendData is the main function
     function sendData() {
+        var formData = createRequest();
+        var request = new XMLHttpRequest();
+        request.open("POST", this.adminServiceUrl + "/api/v1/users/create");
+        request.send(formData);
+    }
+
+    function createRequest() {
         var formData = new FormData();
 
         formData.append("titleId", document.getElementById("user.attributes.nameTitle").value);
@@ -589,6 +596,9 @@ window.addEventListener('load', function () {
         formData.append("parentPhone", document.getElementById("user.attributes.parentPhone").value);
         formData.append("parentMobile", document.getElementById("user.attributes.parentMobile").value);
         formData.append("parentEmail", document.getElementById("user.attributes.parentEmail").value);
+        formData.append("passportNumber", document.getElementById("user.attributes.passportNumber").value);
+        formData.append("civilId", document.getElementById("user.attributes.civilId").value);
+        formData.append("gccId", document.getElementById("user.attributes.gccId").value);
         formData.append("realm", this.realm);
         const date = new Date();
         formData.append("registeredDate", date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());
@@ -597,10 +607,7 @@ window.addEventListener('load', function () {
         var blob = new Blob([file.binary], {type: "text/jpeg"});
         formData.append("userPhoto", blob);
 
-        var request = new XMLHttpRequest();
-        request.open("POST", this.adminServiceUrl + "/api/v1/users/create");
-        request.send(formData);
-
+        return formData;
     }
 
     // Access the form...
@@ -608,7 +615,6 @@ window.addEventListener('load', function () {
 
     // ...to take over the submit event
     form.addEventListener('submit', function (event) {
-        // event.preventDefault();
         sendData();
     });
 
@@ -667,9 +673,7 @@ window.addEventListener('load', function () {
                 } else if (file.type.match('image.*') && (img.width > maxWidth || img.height > maxHeight)) {
                     alert(`The selected image is too big. Please choose one with maximum dimensions of ${maxWidth}x${maxHeight}.`);
                 } else {
-                    e.target.nodeName === 'INPUT'
-                        ? (e.target.form.querySelector("input[type='submit']").disabled = false)
-                        : e.target.submit();
+                    $('#kc-register-form').submit();
                 }
             };
         }
@@ -678,5 +682,36 @@ window.addEventListener('load', function () {
         .addEventListener('submit', validateMaxImageFileSize);
     document.getElementById("user.attributes.userPhoto")
         .addEventListener('change', validateMaxImageFileSize);
+
+    // validate passport number, civil id and gcc id whether unique or not with back end
+    const validateFormData = (e) => {
+        e.preventDefault();
+
+        var formData = createRequest();
+        var request = new XMLHttpRequest();
+        // this is callback function. will be called after response received from request validation
+        request.onload = function (e) {
+            // {"statusCode":4009,"message":"Civil id aeyhw already exists"}
+
+            const responseJson = JSON.parse(this.responseText);
+            if (this.status === 200) {
+                // need to comment this as this is back end validation and front end validations still may fail
+                // document.getElementById('toast').className = 'toast position-fixed bottom-0 end-0 m-5 p-1 align-items-center text-white border-0 bg-success';
+                // document.getElementById('toast-body').innerHTML = responseJson.message;
+                // $('.toast').toast('show');
+                $('#kc-register-form').submit();
+            } else {
+                document.getElementById('toast').className = 'toast position-fixed bottom-0 end-0 m-5 p-1 align-items-center text-white border-0 bg-danger';
+                document.getElementById('toast-body').innerHTML = responseJson.message;
+                $('.toast').toast('show');
+            }
+        };
+
+        request.open("POST", this.adminServiceUrl + "/api/v1/users/validate-user-registration");
+        request.send(formData);
+    }
+
+    // validate from back end for passport number, civil id and gcc id
+    form.addEventListener('submit', validateFormData);
 });
 

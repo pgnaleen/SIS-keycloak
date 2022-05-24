@@ -76,24 +76,6 @@ a:hover {
     position: absolute;
 }
 
-/* .g-recaptcha {
-   transform:scale(2);
-   -webkit-transform:scaleX(3);
-   transform-origin:0 0;
-   -webkit-transform-origin:0 0;
-} */
-
-/* file upload https://bbbootstrap.com/snippets/single-file-upload-preview-thumbnail-74683784 */
-/*body {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    justify-content: space-between;*/
-/*    background: linear-gradient(to right, #D50000, #b06ab3);*/
-/*    color: #d7d7ef;*/
-/*    font-family: 'LATO', sans-serif*/
-/*}*/
-
 .file-drop-area {
     position: relative;
     display: flex;
@@ -160,16 +142,6 @@ a:hover {
     margin-top: 3px !important;
 }
 
-/*.g-recaptcha div {*/
-/*    height: auto !important;*/
-/*    width: 100% !important;*/
-/*}*/
-
-/*iframe {*/
-/*    height: auto !important;*/
-/*    width: 100% !important;*/
-/*}*/
-
 .rc-anchor-light {
     height: auto !important;
     width: 100% !important;
@@ -232,14 +204,6 @@ a:hover {
     font-size: 13px;
 }
 
-/*.eye-icon {*/
-/*    right: 10px;*/
-/*    top: 17px;*/
-/*    cursor: pointer;*/
-/*    z-index: 1;*/
-/*    position: absolute;*/
-/*}*/
-
 .eye-icon {
     margin-left: -30px !important;
     margin-top: 15px;
@@ -257,8 +221,6 @@ a:hover {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    /*width: 100%;*/
-    /*flex-direction: row;*/
 }
 
 .text-rtl {
