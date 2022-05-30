@@ -653,6 +653,7 @@
                                name="user.attributes.passportNumber"
                                value="${(register.formData['user.attributes.passportNumber']!'')}"
                                aria-invalid="<#if messagesPerField.existsError('passportNumber')>true</#if>"
+                               maxlength="30"
                                required/>
                         <label id="lblErrorParentEmail" class="error-msg"></label>
                         <#if messagesPerField.existsError('passportNumber')>
@@ -681,6 +682,7 @@
                                aria-invalid="<#if messagesPerField.existsError('civilId')>true</#if>"
                                onblur="isRequired(document.getElementById('user.attributes.civilId'),
                                            'lblErrorCivilId', 'Civil ID is required.')"
+                               maxlength="30"
                                required/>
                         <div class="invalid-feedback">
                             Civil ID is required.
@@ -708,6 +710,7 @@
                                name="user.attributes.gccId"
                                value="${(register.formData['user.attributes.gccId']!'')}"
                                aria-invalid="<#if messagesPerField.existsError('gccId')>true</#if>"
+                               maxlength="30"
                                required/>
                         <label id="lblErrorGccId" class="error-msg"></label>
                         <#if messagesPerField.existsError('gccId')>
