@@ -672,8 +672,10 @@ window.addEventListener('load', function () {
                     alert('The selected image file is too big. Please choose one that is smaller than 2 MB.');
                 } else if (file.type.match('image.*') && (img.width > maxWidth || img.height > maxHeight)) {
                     alert(`The selected image is too big. Please choose one with maximum dimensions of ${maxWidth}x${maxHeight}.`);
-                } else {
-                    $('#kc-register-form').submit();
+                } else {// at the change if this line is there then this image will be submitted at the change
+                    if (e.type === 'submit') {
+                        $('#kc-register-form').submit();
+                    }
                 }
             };
         }
