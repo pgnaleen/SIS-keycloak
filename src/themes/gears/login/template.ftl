@@ -62,8 +62,8 @@
                 <div class="${properties.kcLoginClass!} px-5">
                     <div id="kc-header" class="${properties.kcHeaderClass!}">
                         <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">
-                            <a href="https://www.gutech.edu.om/">
-                                <img src="${url.resourcesPath}/img/gutech-logo.png" class="w-50 mb-4">
+                            <a href="https://www.osos.om/">
+                                <img src="${url.resourcesPath}/img/osos-logo.png" class="w-50 mb-4">
                             </a>
                             <#--  ${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}  -->
                         </div>
