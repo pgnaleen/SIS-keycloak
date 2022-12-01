@@ -6,12 +6,12 @@
         </div>
     <#elseif section = "form">
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-            <div id="kc-registration-container">
-                <div id="kc-registration">
-                    <span>${msg("noAccount")} <a tabindex="6"
-                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                </div>
-            </div>
+<#--            <div id="kc-registration-container">-->
+<#--                <div id="kc-registration">-->
+<#--                    <span>${msg("noAccount")} <a tabindex="6"-->
+<#--                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>-->
+<#--                </div>-->
+<#--            </div>-->
         </#if>
         <div id="kc-form">
             <div id="kc-form-wrapper">
