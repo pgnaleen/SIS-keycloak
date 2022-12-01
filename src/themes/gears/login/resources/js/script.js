@@ -606,6 +606,7 @@ window.addEventListener('load', function () {
 
         var blob = new Blob([file.binary], {type: "text/jpeg"});
         formData.append("userPhoto", blob);
+        formData.append("tenantId", 1);
 
         return formData;
     }
