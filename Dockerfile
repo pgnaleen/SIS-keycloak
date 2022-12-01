@@ -4,7 +4,7 @@ COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean install -DskipTests
 RUN ls /home/app/src/main
 FROM maven:3.6.0-jdk-11-slim AS build2
-COPY ../keycloak/services/. /home/app/services
+COPY services/. /home/app/services
 RUN mvn -f /home/app/services/pom.xml clean install -DskipTests
 FROM quay.io/keycloak/keycloak:15.0.2 AS keycloak
 COPY --from=build1 /home/app/target/login-event-listener-1.0-SNAPSHOT.jar /opt/jboss/keycloak/standalone/deployments/
